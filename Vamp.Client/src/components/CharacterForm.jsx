@@ -212,6 +212,19 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                                     ))}
                                 </select>
                             </Tooltip>
+                            {character.clan && (
+                                <div style={{
+                                    marginTop: '8px',
+                                    fontSize: '0.85rem',
+                                    color: '#4a0404',
+                                    padding: '8px',
+                                    border: '1px dashed var(--accent-color)',
+                                    backgroundColor: 'rgba(153, 0, 0, 0.05)',
+                                    fontStyle: 'italic'
+                                }}>
+                                    {t(`tooltip.clan_${character.clan.toLowerCase()}`)}
+                                </div>
+                            )}
                         </div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.generation')}>

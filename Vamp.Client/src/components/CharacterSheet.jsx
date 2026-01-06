@@ -1,28 +1,31 @@
 import React from 'react';
 import { useLocalization } from '../context/LocalizationContext';
+import Tooltip from './Tooltip';
+import DotsInput from './DotsInput';
 
 const CharacterSheet = ({ character, onEdit }) => {
     const { t } = useLocalization();
 
     if (!character) return null;
 
-    const renderDots = (value, max = 5) => {
-        const dots = [];
-        for (let i = 0; i < max; i++) {
-            dots.push(
-                <div key={i} className={`dot ${i < value ? 'filled' : ''}`}></div>
-            );
-        }
-        return <div className="dots-container">{dots}</div>;
-    };
-
-    const AttributeBlock = ({ labelKey, label, value, max = 5 }) => {
+    const AttributeBlock = ({ labelKey, label, value, max = 5, attributeName }) => {
         const displayText = labelKey ? t(labelKey) : label;
+        const description = labelKey ? t(`desc.${labelKey.split('.')[1]}`) : (t(`desc.${label.toLowerCase().replace(/\s+/g, '_')}`) || '');
+
+        // Generate DOT tooltips for each level
+        const dotDescriptions = attributeName
+            ? Array.from({ length: max }, (_, i) => t(`dot.${attributeName}.${i + 1}`))
+            : (label ? Array.from({ length: max }, (_, i) => t(`dot.${label.toLowerCase().replace(/\s+/g, '_')}.${i + 1}`)) : []);
+
         return (
             <div style={{ marginBottom: '10px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    {displayText && <span style={{ fontSize: '0.9rem', fontVariant: 'small-caps' }}>{displayText}</span>}
-                    {renderDots(value, max)}
+                    <Tooltip text={description}>
+                        <span style={{ fontSize: '0.9rem', fontVariant: 'small-caps', cursor: 'help' }}>
+                            {displayText}
+                        </span>
+                    </Tooltip>
+                    <DotsInput value={value} max={max} onChange={() => { }} dotDescriptions={dotDescriptions} />
                 </div>
             </div>
         );
@@ -45,7 +48,8 @@ const CharacterSheet = ({ character, onEdit }) => {
                     fontFamily: 'Cinzel',
                     fontWeight: 'bold',
                     fontSize: '0.8rem',
-                    transition: 'all 0.2s'
+                    transition: 'all 0.2s',
+                    zIndex: 10
                 }}
                 onMouseOver={(e) => {
                     e.currentTarget.style.background = '#8b0000';
@@ -66,21 +70,39 @@ const CharacterSheet = ({ character, onEdit }) => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem', borderBottom: '1px solid #444', paddingBottom: '1rem', marginBottom: '1rem' }}>
                 {/* Identity Column */}
                 <div>
-                    <p><strong>{t('label.name')}:</strong> {character.name}</p>
-                    <p><strong>{t('label.player')}:</strong> {character.player || '-'}</p>
-                    <p><strong>{t('label.chronicle')}:</strong> {character.chronicle || '-'}</p>
+                    <Tooltip text={t('tooltip.name')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.name')}:</strong> {character.name}</p>
+                    </Tooltip>
+                    <Tooltip text={t('tooltip.player')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.player')}:</strong> {character.player || '-'}</p>
+                    </Tooltip>
+                    <Tooltip text={t('tooltip.chronicle')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.chronicle')}:</strong> {character.chronicle || '-'}</p>
+                    </Tooltip>
                 </div>
                 {/* Personality Column */}
                 <div>
-                    <p><strong>{t('label.nature')}:</strong> {character.nature ? (t(`archetype.${(character.nature || '').toLowerCase().replace(/\s+/g, '_')}`) || character.nature) : '-'}</p>
-                    <p><strong>{t('label.demeanor')}:</strong> {character.demeanor ? (t(`archetype.${(character.demeanor || '').toLowerCase().replace(/\s+/g, '_')}`) || character.demeanor) : '-'}</p>
-                    <p><strong>{t('label.concept')}:</strong> {character.concept || '-'}</p>
+                    <Tooltip text={t(`tooltip.archetype_${(character.nature || '').toLowerCase().replace(/\s+/g, '_')}`) || t('tooltip.nature')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.nature')}:</strong> {character.nature ? (t(`archetype.${(character.nature || '').toLowerCase().replace(/\s+/g, '_')}`) || character.nature) : '-'}</p>
+                    </Tooltip>
+                    <Tooltip text={t(`tooltip.archetype_${(character.demeanor || '').toLowerCase().replace(/\s+/g, '_')}`) || t('tooltip.demeanor')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.demeanor')}:</strong> {character.demeanor ? (t(`archetype.${(character.demeanor || '').toLowerCase().replace(/\s+/g, '_')}`) || character.demeanor) : '-'}</p>
+                    </Tooltip>
+                    <Tooltip text={t('tooltip.concept')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.concept')}:</strong> {character.concept || '-'}</p>
+                    </Tooltip>
                 </div>
                 {/* Background Column */}
                 <div>
-                    <p><strong>{t('label.clan')}:</strong> {character.clan || '-'}</p>
-                    <p><strong>{t('label.generation')}:</strong> {character.generation || '-'}</p>
-                    <p><strong>{t('label.sire')}:</strong> {character.sire || '-'}</p>
+                    <Tooltip text={t(`tooltip.clan_${(character.clan || '').toLowerCase()}`) || t('tooltip.clan')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.clan')}:</strong> {character.clan || '-'}</p>
+                    </Tooltip>
+                    <Tooltip text={t('tooltip.generation')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.generation')}:</strong> {character.generation || '-'}</p>
+                    </Tooltip>
+                    <Tooltip text={t('tooltip.sire')}>
+                        <p style={{ cursor: 'help' }}><strong>{t('label.sire')}:</strong> {character.sire || '-'}</p>
+                    </Tooltip>
                 </div>
             </div>
 
@@ -89,21 +111,21 @@ const CharacterSheet = ({ character, onEdit }) => {
             <div className="attributes-grid">
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.physical')}</h3>
-                    <AttributeBlock labelKey="attr.strength" value={character.attributes?.strength || 1} />
-                    <AttributeBlock labelKey="attr.dexterity" value={character.attributes?.dexterity || 1} />
-                    <AttributeBlock labelKey="attr.stamina" value={character.attributes?.stamina || 1} />
+                    <AttributeBlock labelKey="attr.strength" value={character.attributes?.strength || 1} attributeName="strength" />
+                    <AttributeBlock labelKey="attr.dexterity" value={character.attributes?.dexterity || 1} attributeName="dexterity" />
+                    <AttributeBlock labelKey="attr.stamina" value={character.attributes?.stamina || 1} attributeName="stamina" />
                 </div>
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.social')}</h3>
-                    <AttributeBlock labelKey="attr.charisma" value={character.attributes?.charisma || 1} />
-                    <AttributeBlock labelKey="attr.manipulation" value={character.attributes?.manipulation || 1} />
-                    <AttributeBlock labelKey="attr.appearance" value={character.attributes?.appearance || 1} />
+                    <AttributeBlock labelKey="attr.charisma" value={character.attributes?.charisma || 1} attributeName="charisma" />
+                    <AttributeBlock labelKey="attr.manipulation" value={character.attributes?.manipulation || 1} attributeName="manipulation" />
+                    <AttributeBlock labelKey="attr.appearance" value={character.attributes?.appearance || 1} attributeName="appearance" />
                 </div>
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.mental')}</h3>
-                    <AttributeBlock labelKey="attr.perception" value={character.attributes?.perception || 1} />
-                    <AttributeBlock labelKey="attr.intelligence" value={character.attributes?.intelligence || 1} />
-                    <AttributeBlock labelKey="attr.wits" value={character.attributes?.wits || 1} />
+                    <AttributeBlock labelKey="attr.perception" value={character.attributes?.perception || 1} attributeName="perception" />
+                    <AttributeBlock labelKey="attr.intelligence" value={character.attributes?.intelligence || 1} attributeName="intelligence" />
+                    <AttributeBlock labelKey="attr.wits" value={character.attributes?.wits || 1} attributeName="wits" />
                 </div>
             </div>
 
@@ -153,20 +175,22 @@ const CharacterSheet = ({ character, onEdit }) => {
                 <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <div>
                         <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.willpower')}</h3>
-                        <AttributeBlock value={character.willpower ?? 5} max={10} />
+                        <AttributeBlock labelKey="label.willpower" value={character.willpower ?? 5} max={10} attributeName="willpower" />
                     </div>
                     <div>
                         <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.humanity')}</h3>
-                        <AttributeBlock value={character.humanity ?? 7} max={10} />
+                        <AttributeBlock labelKey="label.humanity" value={character.humanity ?? 7} max={10} attributeName="humanity" />
                     </div>
                     <div>
                         <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.blood_pool')}</h3>
-                        <AttributeBlock value={character.bloodPool ?? 10} max={10} />
+                        <AttributeBlock labelKey="label.blood_pool" value={character.bloodPool ?? 10} max={10} attributeName="blood_pool" />
                     </div>
                 </div>
 
                 <div className="card">
-                    <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem', textAlign: 'center' }}>{t('label.health')}</h3>
+                    <Tooltip text={t('desc.health')}>
+                        <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem', textAlign: 'center', cursor: 'help' }}>{t('label.health')}</h3>
+                    </Tooltip>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
                         {[-1, 0, 1, 2, 3, 4, 5, 6].map(level => (
                             <div key={level} style={{
