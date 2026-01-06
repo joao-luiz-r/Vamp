@@ -1,0 +1,21 @@
+# General
+.vs/
+.vscode/
+node_modules/
+bin/
+obj/
+dist/
+
+# Project Specific
+Vamp.Client/node_modules/
+Vamp.Client/dist/
+Vamp.Api/bin/
+Vamp.Api/obj/
+Vamp.Api/CharacterData/
+Vamp.Api/Characters.json
+
+# IDE
+*.suo
+*.user
+*.userosscache
+*.sln.docuser

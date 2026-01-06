@@ -1,0 +1,21 @@
+# .NET
+bin/
+obj/
+[Oo]bj/
+[Bb]in/
+*.user
+*.userosscache
+*.sln.docuser
+
+# User-specific files
+.vs/
+.vscode/
+appsettings.Development.json
+
+# Logs
+*.log
+
+# Persistence
+CharacterData/
+*.json
+!appsettings.json
