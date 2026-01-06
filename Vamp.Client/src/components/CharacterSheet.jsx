@@ -152,15 +152,15 @@ const CharacterSheet = ({ character, onEdit }) => {
             <div className="attributes-grid">
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.humanity')}</h3>
-                    <AttributeBlock value={character.humanity || 0} max={10} />
+                    <AttributeBlock value={character.humanity ?? 0} max={10} />
                 </div>
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.willpower')}</h3>
-                    <AttributeBlock value={character.willpower || 0} max={10} />
+                    <AttributeBlock value={character.willpower ?? 0} max={10} />
                 </div>
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.blood_pool')}</h3>
-                    <AttributeBlock value={character.bloodPool || 0} max={10} />
+                    <AttributeBlock value={character.bloodPool ?? 0} max={10} />
                 </div>
             </div>
 
@@ -182,7 +182,7 @@ const CharacterSheet = ({ character, onEdit }) => {
                                 width: '16px',
                                 height: '16px',
                                 border: '1px solid #666',
-                                backgroundColor: level <= character.health ? '#8b0000' : 'transparent',
+                                backgroundColor: level === character.health ? '#8b0000' : 'transparent',
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
@@ -190,7 +190,7 @@ const CharacterSheet = ({ character, onEdit }) => {
                                 fontSize: '12px',
                                 fontWeight: 'bold'
                             }}>
-                                {level <= character.health && 'X'}
+                                {level === character.health && 'X'}
                             </div>
                         </div>
                     ))}
