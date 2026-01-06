@@ -103,6 +103,7 @@ export const LOCALES = {
         'desc.blood_pool': 'Vampiric vitae currently in your system.',
 
         // Health levels
+        'health.level.-1': 'OK',
         'health.level.0': 'Bruised',
         'health.level.1': 'Hurt (-1)',
         'health.level.2': 'Injured (-1)',
@@ -294,6 +295,7 @@ export const LOCALES = {
         'desc.blood_pool': 'Quantidade de vitae vampírica em seu sistema.',
 
         // Níveis de Vitalidade
+        'health.level.-1': 'OK',
         'health.level.0': 'Escoriado',
         'health.level.1': 'Machucado (-1)',
         'health.level.2': 'Ferido (-1)',

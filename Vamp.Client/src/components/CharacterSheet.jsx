@@ -167,7 +167,7 @@ const CharacterSheet = ({ character, onEdit }) => {
             <div style={{ marginTop: '2rem' }}>
                 <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.health')}</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                    {[0, 1, 2, 3, 4, 5, 6].map(level => (
+                    {[-1, 0, 1, 2, 3, 4, 5, 6].map(level => (
                         <div key={level} style={{
                             display: 'flex',
                             justifyContent: 'space-between',

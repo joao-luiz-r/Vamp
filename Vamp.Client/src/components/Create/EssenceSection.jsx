@@ -3,7 +3,7 @@ import AttributeInput from '../AttributeInput';
 import Tooltip from '../Tooltip';
 
 const EssenceSection = ({ willpower, humanity, health, bloodPool, onChange, t }) => {
-    const healthLevels = [0, 1, 2, 3, 4, 5, 6];
+    const healthLevels = [-1, 0, 1, 2, 3, 4, 5, 6];
 
     return (
         <div className="essence-section" style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
