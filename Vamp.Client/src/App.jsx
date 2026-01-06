@@ -11,6 +11,7 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 function App() {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
   const { t } = useLocalization();
 
   useEffect(() => {
@@ -29,6 +30,28 @@ function App() {
   const handleCharacterCreated = (newCharacter) => {
     setCharacters([...characters, newCharacter]);
     setSelectedCharacter(newCharacter);
+    setIsEditing(false);
+  };
+
+  const handleCharacterUpdated = async (updatedCharacter) => {
+    await fetchCharacters();
+    setSelectedCharacter(updatedCharacter);
+    setIsEditing(false);
+  };
+
+  const handleEditCharacter = () => {
+    setIsEditing(true);
+  };
+
+  const handleSelectCharacter = (id) => {
+    const char = characters.find(c => c.id === id);
+    setSelectedCharacter(char || null);
+    setIsEditing(false);
+  };
+
+  const handleNewCharacter = () => {
+    setSelectedCharacter(null);
+    setIsEditing(false);
   };
 
   return (
@@ -79,8 +102,7 @@ function App() {
               value={selectedCharacter?.id || ''}
               onChange={(e) => {
                 const id = parseInt(e.target.value);
-                const char = characters.find(c => c.id === id);
-                setSelectedCharacter(char || null);
+                handleSelectCharacter(id);
               }}
               style={{
                 padding: '6px',
@@ -107,7 +129,7 @@ function App() {
           </div>
 
           <button
-            onClick={() => setSelectedCharacter(null)}
+            onClick={handleNewCharacter}
             className="btn-new"
             style={{
               background: 'linear-gradient(135deg, #4a0000 0%, #2a0000 100%)',
@@ -151,7 +173,17 @@ function App() {
       <div className="main-content">
         <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
           {selectedCharacter ? (
-            <CharacterSheet character={selectedCharacter} />
+            isEditing ? (
+              <CharacterForm
+                onCharacterCreated={handleCharacterUpdated}
+                initialCharacter={selectedCharacter}
+              />
+            ) : (
+              <CharacterSheet
+                character={selectedCharacter}
+                onEdit={handleEditCharacter}
+              />
+            )
           ) : (
             <CharacterForm onCharacterCreated={handleCharacterCreated} />
           )}

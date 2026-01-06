@@ -8,7 +8,7 @@ import DisciplinesSection from './Create/DisciplinesSection';
 import EssenceSection from './Create/EssenceSection';
 import Tooltip from './Tooltip';
 
-const CharacterForm = ({ onCharacterCreated }) => {
+const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
     const { t, language } = useLocalization();
     const [character, setCharacter] = useState({
         name: '',
@@ -36,6 +36,29 @@ const CharacterForm = ({ onCharacterCreated }) => {
         health: 0,
         bloodPool: 10
     });
+
+    useEffect(() => {
+        if (initialCharacter) {
+            setCharacter({
+                ...initialCharacter,
+                attributes: initialCharacter.attributes || {
+                    strength: 1, dexterity: 1, stamina: 1,
+                    charisma: 1, manipulation: 1, appearance: 1,
+                    perception: 1, intelligence: 1, wits: 1
+                },
+                abilities: initialCharacter.abilities || {
+                    talents: {},
+                    skills: {},
+                    knowledges: {}
+                },
+                disciplines: initialCharacter.disciplines || [],
+                willpower: initialCharacter.willpower || 5,
+                humanity: initialCharacter.humanity || 7,
+                health: initialCharacter.health || 0,
+                bloodPool: initialCharacter.bloodPool || 10
+            });
+        }
+    }, [initialCharacter]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -88,9 +111,17 @@ const CharacterForm = ({ onCharacterCreated }) => {
         e.preventDefault();
         try {
             const charToSave = { ...character, language };
-            const newChar = await characterService.create(charToSave);
-            onCharacterCreated(newChar);
-            alert(t('action.created'));
+            let savedChar;
+
+            if (initialCharacter?.id) {
+                savedChar = await characterService.update(initialCharacter.id, charToSave);
+                alert(t('action.updated') || 'Character updated!');
+            } else {
+                savedChar = await characterService.create(charToSave);
+                alert(t('action.created'));
+            }
+
+            onCharacterCreated(savedChar);
         } catch (error) {
             console.error('Error:', error);
             alert(t('action.error'));
@@ -232,7 +263,9 @@ const CharacterForm = ({ onCharacterCreated }) => {
                     t={t}
                 />
 
-                <button type="submit" style={{ marginTop: '2rem', width: '100%' }}>{t('action.embrace')}</button>
+                <button type="submit" style={{ marginTop: '2rem', width: '100%' }}>
+                    {initialCharacter ? (t('action.update') || 'Update') : t('action.embrace')}
+                </button>
             </form>
         </div>
     );
