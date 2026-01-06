@@ -33,8 +33,13 @@ namespace Vamp.Api.Services
             {
                 try
                 {
+                    var options = new JsonSerializerOptions 
+                    { 
+                        PropertyNameCaseInsensitive = true,
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase 
+                    };
                     var json = File.ReadAllText(_filePath);
-                    return JsonSerializer.Deserialize<CharacterStorage>(json) 
+                    return JsonSerializer.Deserialize<CharacterStorage>(json, options) 
                         ?? new CharacterStorage { NextId = 1, Characters = new List<Character>() };
                 }
                 catch (Exception ex)
@@ -51,7 +56,11 @@ namespace Vamp.Api.Services
             {
                 try
                 {
-                    var options = new JsonSerializerOptions { WriteIndented = true };
+                    var options = new JsonSerializerOptions 
+                    { 
+                        WriteIndented = true,
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase 
+                    };
                     var json = JsonSerializer.Serialize(storage, options);
                     File.WriteAllText(_filePath, json);
                 }
