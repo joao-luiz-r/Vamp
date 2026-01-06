@@ -33,7 +33,7 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
         disciplines: [],
         willpower: 5,
         humanity: 7,
-        health: 0,
+        health: -1,
         bloodPool: 10
     });
 
@@ -52,10 +52,10 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                     knowledges: {}
                 },
                 disciplines: initialCharacter.disciplines || [],
-                willpower: initialCharacter.willpower || 5,
-                humanity: initialCharacter.humanity || 7,
-                health: initialCharacter.health || 0,
-                bloodPool: initialCharacter.bloodPool || 10
+                willpower: (initialCharacter.willpower !== undefined && initialCharacter.willpower !== null) ? initialCharacter.willpower : 5,
+                humanity: (initialCharacter.humanity !== undefined && initialCharacter.humanity !== null) ? initialCharacter.humanity : 7,
+                health: (initialCharacter.health !== undefined && initialCharacter.health !== null) ? initialCharacter.health : -1,
+                bloodPool: (initialCharacter.bloodPool !== undefined && initialCharacter.bloodPool !== null) ? initialCharacter.bloodPool : 10
             });
         }
     }, [initialCharacter]);

@@ -27,7 +27,7 @@ namespace Vamp.Api.Models
         // New Essence fields
         public int Willpower { get; set; } = 5;
         public int Humanity { get; set; } = 7;
-        public int Health { get; set; } = 0; // 0 means no damage (Bruised)
+        public int Health { get; set; } = -1; // -1 means OK (No damage)
         public int BloodPool { get; set; } = 10;
     }
 

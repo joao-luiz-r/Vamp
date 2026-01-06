@@ -152,15 +152,15 @@ const CharacterSheet = ({ character, onEdit }) => {
             <div className="attributes-grid">
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.humanity')}</h3>
-                    <AttributeBlock value={character.humanity ?? 0} max={10} />
+                    <AttributeBlock value={character.humanity ?? 7} max={10} />
                 </div>
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.willpower')}</h3>
-                    <AttributeBlock value={character.willpower ?? 0} max={10} />
+                    <AttributeBlock value={character.willpower ?? 5} max={10} />
                 </div>
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.blood_pool')}</h3>
-                    <AttributeBlock value={character.bloodPool ?? 0} max={10} />
+                    <AttributeBlock value={character.bloodPool ?? 10} max={10} />
                 </div>
             </div>
 
@@ -173,7 +173,7 @@ const CharacterSheet = ({ character, onEdit }) => {
                             justifyContent: 'space-between',
                             alignItems: 'center',
                             padding: '5px 10px',
-                            backgroundColor: character.health === level ? 'rgba(139, 0, 0, 0.15)' : 'transparent',
+                            backgroundColor: (character.health ?? -1) === level ? 'rgba(139, 0, 0, 0.15)' : 'transparent',
                             border: '1px solid #444',
                             borderRadius: '4px'
                         }}>
@@ -182,7 +182,7 @@ const CharacterSheet = ({ character, onEdit }) => {
                                 width: '16px',
                                 height: '16px',
                                 border: '1px solid #666',
-                                backgroundColor: level === character.health ? '#8b0000' : 'transparent',
+                                backgroundColor: level === (character.health ?? -1) ? '#8b0000' : 'transparent',
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
@@ -190,7 +190,7 @@ const CharacterSheet = ({ character, onEdit }) => {
                                 fontSize: '12px',
                                 fontWeight: 'bold'
                             }}>
-                                {level === character.health && 'X'}
+                                {level === (character.health ?? -1) && 'X'}
                             </div>
                         </div>
                     ))}

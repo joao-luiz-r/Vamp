@@ -60,14 +60,14 @@ const EssenceSection = ({ willpower, humanity, health, bloodPool, onChange, t })
                                     width: '15px',
                                     height: '15px',
                                     border: '1px solid #333',
-                                    backgroundColor: level <= health ? '#8b0000' : 'transparent',
+                                    backgroundColor: level === health ? '#8b0000' : 'transparent',
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     color: 'white',
                                     fontSize: '10px'
                                 }}>
-                                    {level <= health && 'X'}
+                                    {level === health && 'X'}
                                 </div>
                             </div>
                         ))}
