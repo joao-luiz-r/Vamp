@@ -149,51 +149,53 @@ const CharacterSheet = ({ character, onEdit }) => {
 
             <hr style={{ border: '2px solid #000', margin: '2rem 0' }} />
 
-            <div className="attributes-grid">
-                <div>
-                    <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.humanity')}</h3>
-                    <AttributeBlock value={character.humanity ?? 7} max={10} />
+            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <div>
+                        <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.willpower')}</h3>
+                        <AttributeBlock value={character.willpower ?? 5} max={10} />
+                    </div>
+                    <div>
+                        <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.humanity')}</h3>
+                        <AttributeBlock value={character.humanity ?? 7} max={10} />
+                    </div>
+                    <div>
+                        <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.blood_pool')}</h3>
+                        <AttributeBlock value={character.bloodPool ?? 10} max={10} />
+                    </div>
                 </div>
-                <div>
-                    <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.willpower')}</h3>
-                    <AttributeBlock value={character.willpower ?? 5} max={10} />
-                </div>
-                <div>
-                    <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.blood_pool')}</h3>
-                    <AttributeBlock value={character.bloodPool ?? 10} max={10} />
-                </div>
-            </div>
 
-            <div style={{ marginTop: '2rem' }}>
-                <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.health')}</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                    {[-1, 0, 1, 2, 3, 4, 5, 6].map(level => (
-                        <div key={level} style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            padding: '5px 10px',
-                            backgroundColor: (character.health ?? -1) === level ? 'rgba(139, 0, 0, 0.15)' : 'transparent',
-                            border: '1px solid #444',
-                            borderRadius: '4px'
-                        }}>
-                            <span style={{ fontSize: '0.9rem' }}>{t(`health.level.${level}`)}</span>
-                            <div style={{
-                                width: '16px',
-                                height: '16px',
-                                border: '1px solid #666',
-                                backgroundColor: level === (character.health ?? -1) ? '#8b0000' : 'transparent',
+                <div className="card">
+                    <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem', textAlign: 'center' }}>{t('label.health')}</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                        {[-1, 0, 1, 2, 3, 4, 5, 6].map(level => (
+                            <div key={level} style={{
                                 display: 'flex',
-                                justifyContent: 'center',
+                                justifyContent: 'space-between',
                                 alignItems: 'center',
-                                color: 'white',
-                                fontSize: '12px',
-                                fontWeight: 'bold'
+                                padding: '5px 10px',
+                                backgroundColor: (character.health ?? -1) === level ? 'rgba(139, 0, 0, 0.15)' : 'transparent',
+                                border: '1px solid #444',
+                                borderRadius: '4px'
                             }}>
-                                {level === (character.health ?? -1) && 'X'}
+                                <span style={{ fontSize: '0.9rem' }}>{t(`health.level.${level}`)}</span>
+                                <div style={{
+                                    width: '16px',
+                                    height: '16px',
+                                    border: '1px solid #666',
+                                    backgroundColor: level === (character.health ?? -1) ? '#8b0000' : 'transparent',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    fontWeight: 'bold'
+                                }}>
+                                    {level === (character.health ?? -1) && 'X'}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
