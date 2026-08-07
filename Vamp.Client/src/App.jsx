@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import CharacterForm from './components/CharacterForm';
 import CharacterSheet from './components/CharacterSheet';
 import { characterService } from './services/characterService';
-
 import VampireLogo from './components/VampireLogo';
 import { useLocalization } from './context/LocalizationContext';
-
+import { useToast } from './context/ToastContext';
+import { useConfirm } from './context/ConfirmContext';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
   const { t } = useLocalization();
+  const { showToast } = useToast() || {};
+  const { requestConfirm } = useConfirm();
 
   useEffect(() => {
     fetchCharacters();
@@ -29,6 +32,47 @@ function App() {
   const handleCharacterCreated = (newCharacter) => {
     setCharacters([...characters, newCharacter]);
     setSelectedCharacter(newCharacter);
+    setIsEditing(false);
+  };
+
+  const handleCharacterUpdated = async (updatedCharacter) => {
+    await fetchCharacters();
+    setSelectedCharacter(updatedCharacter);
+    setIsEditing(false);
+  };
+
+  const handleDeleteCharacter = async () => {
+    if (!selectedCharacter) return;
+    const confirmMessage = t('action.confirm_delete') || 'Are you sure you want to delete this Kindred?';
+    const confirmed = await requestConfirm(confirmMessage);
+    if (confirmed) {
+      try {
+        await characterService.delete(selectedCharacter.id);
+        const updatedList = characters.filter(c => c.id !== selectedCharacter.id);
+        setCharacters(updatedList);
+        setSelectedCharacter(null);
+        setIsEditing(false);
+        if (showToast) showToast(t('action.deleted') || 'Character deleted.', 'error');
+      } catch (err) {
+        console.error('Error deleting character:', err);
+        if (showToast) showToast(t('action.error') || 'Error deleting character.', 'error');
+      }
+    }
+  };
+
+  const handleEditCharacter = () => {
+    setIsEditing(true);
+  };
+
+  const handleSelectCharacter = (id) => {
+    const char = characters.find(c => c.id === id);
+    setSelectedCharacter(char || null);
+    setIsEditing(false);
+  };
+
+  const handleNewCharacter = () => {
+    setSelectedCharacter(null);
+    setIsEditing(false);
   };
 
   return (
@@ -79,8 +123,7 @@ function App() {
               value={selectedCharacter?.id || ''}
               onChange={(e) => {
                 const id = parseInt(e.target.value);
-                const char = characters.find(c => c.id === id);
-                setSelectedCharacter(char || null);
+                handleSelectCharacter(id);
               }}
               style={{
                 padding: '6px',
@@ -107,7 +150,7 @@ function App() {
           </div>
 
           <button
-            onClick={() => setSelectedCharacter(null)}
+            onClick={handleNewCharacter}
             className="btn-new"
             style={{
               background: 'linear-gradient(135deg, #4a0000 0%, #2a0000 100%)',
@@ -151,7 +194,18 @@ function App() {
       <div className="main-content">
         <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
           {selectedCharacter ? (
-            <CharacterSheet character={selectedCharacter} />
+            isEditing ? (
+              <CharacterForm
+                onCharacterCreated={handleCharacterUpdated}
+                initialCharacter={selectedCharacter}
+              />
+            ) : (
+              <CharacterSheet
+                character={selectedCharacter}
+                onEdit={handleEditCharacter}
+                onDelete={handleDeleteCharacter}
+              />
+            )
           ) : (
             <CharacterForm onCharacterCreated={handleCharacterCreated} />
           )}

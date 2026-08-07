@@ -1,4 +1,5 @@
 import React from 'react';
+import Tooltip from './Tooltip';
 
 const DotsInput = ({ value, max = 5, onChange, dotDescriptions = [] }) => {
     return (
@@ -9,29 +10,30 @@ const DotsInput = ({ value, max = 5, onChange, dotDescriptions = [] }) => {
                 const tooltipText = dotDescriptions[index] || `Set to ${dotValue}`;
 
                 return (
-                    <div
-                        key={index}
-                        className={`dot ${isFilled ? 'filled' : ''}`}
-                        onClick={() => onChange(dotValue)}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'scale(1.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'scale(1)';
-                        }}
-                        title={tooltipText}
-                        role="radio"
-                        aria-checked={isFilled}
-                        aria-label={`${dotValue} dots`}
-                    />
+                    <Tooltip key={index} text={tooltipText}>
+                        <div
+                            className={`dot ${isFilled ? 'filled' : ''}`}
+                            onClick={() => onChange(dotValue)}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'scale(1.2)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'scale(1)';
+                            }}
+                            role="radio"
+                            aria-checked={isFilled}
+                            aria-label={`${dotValue} dots`}
+                        />
+                    </Tooltip>
                 );
             })}
             {/* Allow clearing to 0 for abilities */}
-            <div
-                style={{ width: '10px', height: '14px' }}
-                onClick={() => onChange(0)}
-                title="Clear"
-            />
+            <Tooltip text="Clear / Limpar">
+                <div
+                    style={{ width: '10px', height: '14px', marginLeft: '5px' }}
+                    onClick={() => onChange(0)}
+                />
+            </Tooltip>
         </div>
     );
 };

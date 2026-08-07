@@ -1,0 +1,242 @@
+{
+  "nextId": 5,
+  "characters": [
+    {
+      "id": 1,
+      "name": "Haze",
+      "player": "joao",
+      "chronicle": "LA",
+      "language": "Pt-Br",
+      "nature": "Jester",
+      "demeanor": "Visionary",
+      "concept": "Ghost Seer",
+      "clan": "Malkavian",
+      "generation": 10,
+      "sire": "Silas",
+      "attributes": {
+        "strength": 2,
+        "dexterity": 3,
+        "stamina": 2,
+        "charisma": 3,
+        "manipulation": 4,
+        "appearance": 3,
+        "perception": 4,
+        "intelligence": 5,
+        "wits": 4
+      },
+      "abilities": {
+        "talents": {
+          "Alertness": 5,
+          "Athletics": 4,
+          "Brawl": 3,
+          "Subterfuge": 5,
+          "Streetwise": 5,
+          "Leadership": 5,
+          "Expression": 2,
+          "Intimidation": 3,
+          "Dodge": 2,
+          "Empathy": 5
+        },
+        "skills": {
+          "Animal Ken": 5,
+          "Crafts": 4,
+          "Drive": 3,
+          "Etiquette": 2,
+          "Firearms": 1,
+          "Melee": 2,
+          "Performance": 3,
+          "Security": 4,
+          "Stealth": 5,
+          "Survival": 4
+        },
+        "knowledges": {
+          "Science": 1,
+          "Politics": 2,
+          "Occult": 3,
+          "Medicine": 4,
+          "Linguistics": 5,
+          "Law": 4,
+          "Investigation": 3,
+          "Finance": 2,
+          "Computer": 1,
+          "Academics": 2
+        }
+      },
+      "disciplines": [
+        {
+          "name": "Auspex",
+          "level": 4
+        },
+        {
+          "name": "Dementation",
+          "level": 2
+        },
+        {
+          "name": "Obfuscate",
+          "level": 3
+        }
+      ],
+      "willpower": 10,
+      "humanity": 8,
+      "health": -1,
+      "bloodPool": 10
+    },
+    {
+      "id": 2,
+      "name": "Hopper",
+      "player": "joao",
+      "chronicle": "LA",
+      "language": "Pt-Br",
+      "nature": "Architect",
+      "demeanor": "Director",
+      "concept": "CEO de Cyberseguran\u00E7a",
+      "clan": "Ventrue",
+      "generation": 11,
+      "sire": "Nathaniel",
+      "attributes": {
+        "strength": 1,
+        "dexterity": 2,
+        "stamina": 3,
+        "charisma": 2,
+        "manipulation": 3,
+        "appearance": 4,
+        "perception": 3,
+        "intelligence": 4,
+        "wits": 5
+      },
+      "abilities": {
+        "talents": {
+          "Alertness": 1,
+          "Athletics": 2,
+          "Brawl": 1,
+          "Dodge": 2,
+          "Empathy": 1,
+          "Expression": 2,
+          "Intimidation": 1,
+          "Leadership": 2,
+          "Streetwise": 1,
+          "Subterfuge": 2
+        },
+        "skills": {
+          "Animal Ken": 2,
+          "Crafts": 3,
+          "Drive": 2,
+          "Etiquette": 3,
+          "Firearms": 2,
+          "Melee": 3,
+          "Performance": 2,
+          "Security": 3,
+          "Stealth": 2,
+          "Survival": 3
+        },
+        "knowledges": {
+          "Academics": 3,
+          "Computer": 4,
+          "Finance": 3,
+          "Investigation": 4,
+          "Law": 3,
+          "Linguistics": 4,
+          "Medicine": 3,
+          "Occult": 4,
+          "Politics": 3,
+          "Science": 4
+        }
+      },
+      "disciplines": [
+        {
+          "name": "Fortitude",
+          "level": 1
+        },
+        {
+          "name": "Presence",
+          "level": 3
+        },
+        {
+          "name": "Dominate",
+          "level": 2
+        }
+      ],
+      "willpower": 10,
+      "humanity": 7,
+      "health": -1,
+      "bloodPool": 5
+    },
+    {
+      "id": 3,
+      "name": "tt",
+      "player": "",
+      "chronicle": "",
+      "language": "Pt-Br",
+      "nature": "",
+      "demeanor": "",
+      "concept": "",
+      "clan": "Tremere",
+      "generation": 13,
+      "sire": "",
+      "attributes": {
+        "strength": 1,
+        "dexterity": 1,
+        "stamina": 1,
+        "charisma": 1,
+        "manipulation": 1,
+        "appearance": 1,
+        "perception": 1,
+        "intelligence": 1,
+        "wits": 1
+      },
+      "abilities": {
+        "talents": {},
+        "skills": {},
+        "knowledges": {}
+      },
+      "disciplines": [
+        {
+          "name": "Auspex",
+          "level": 2
+        },
+        {
+          "name": "Thaumaturgy",
+          "level": 3
+        }
+      ],
+      "willpower": 5,
+      "humanity": 7,
+      "health": -1,
+      "bloodPool": 10
+    },
+    {
+      "id": 4,
+      "name": "dfhdf",
+      "player": "",
+      "chronicle": "",
+      "language": "Pt-Br",
+      "nature": "",
+      "demeanor": "",
+      "concept": "",
+      "clan": "Toreador",
+      "generation": 13,
+      "sire": "",
+      "attributes": {
+        "strength": 1,
+        "dexterity": 1,
+        "stamina": 1,
+        "charisma": 1,
+        "manipulation": 1,
+        "appearance": 1,
+        "perception": 1,
+        "intelligence": 1,
+        "wits": 1
+      },
+      "abilities": {
+        "talents": {},
+        "skills": {},
+        "knowledges": {}
+      },
+      "disciplines": [],
+      "willpower": 5,
+      "humanity": 7,
+      "health": -1,
+      "bloodPool": 10
+    }
+  ]
+}

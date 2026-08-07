@@ -277,6 +277,13 @@ export const DOT_DESCRIPTIONS_EN = {
     'dot.blood_pool.8': '•••••••• Stuffed: You have an abundance of vitae.',
     'dot.blood_pool.9': '••••••••• Overflowing: You are pulsing with power.',
     'dot.blood_pool.10': '•••••••••• Bursting: You are at maximum capacity for your generation.',
+
+    // DISCIPLINE LEVELS (GENERIC)
+    'dot.discipline.1': '• Level 1 Mastery',
+    'dot.discipline.2': '•• Level 2 Mastery',
+    'dot.discipline.3': '••• Level 3 Mastery',
+    'dot.discipline.4': '•••• Level 4 Mastery',
+    'dot.discipline.5': '••••• Level 5 Mastery',
 };
 
 export const DOT_DESCRIPTIONS_PT = {
@@ -555,5 +562,12 @@ export const DOT_DESCRIPTIONS_PT = {
     'dot.blood_pool.8': '•••••••• Abundante: Você tem uma abundância de vitae.',
     'dot.blood_pool.9': '••••••••• Transbordando: Você está pulsando com poder.',
     'dot.blood_pool.10': '•••••••••• Completo: Você está na capacidade máxima para sua geração.',
+
+    // NÍVEIS DE DISCIPLINA (GENÉRICO)
+    'dot.discipline.1': '• Nível 1 de Domínio',
+    'dot.discipline.2': '•• Nível 2 de Domínio',
+    'dot.discipline.3': '••• Nível 3 de Domínio',
+    'dot.discipline.4': '•••• Nível 4 de Domínio',
+    'dot.discipline.5': '••••• Nível 5 de Domínio',
 };
 

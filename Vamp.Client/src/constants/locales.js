@@ -103,6 +103,7 @@ export const LOCALES = {
         'desc.blood_pool': 'Vampiric vitae currently in your system.',
 
         // Health levels
+        'health.level.-1': 'OK',
         'health.level.0': 'Bruised',
         'health.level.1': 'Hurt (-1)',
         'health.level.2': 'Injured (-1)',
@@ -114,8 +115,13 @@ export const LOCALES = {
         // Actions
         'action.embrace': 'Embrace',
         'action.edit': 'Edit',
+        'action.delete': 'Delete',
         'action.update': 'Update',
         'action.updated': 'Character Updated Successfully!',
+        'action.created': 'Character Embraced Successfully!',
+        'action.deleted': 'Character has met Final Death.',
+        'action.confirm_delete': 'Are you sure you want to delete this Kindred?',
+        'action.error': 'An error occurred while saving.',
         'action.add_discipline': '+ Add Discipline',
 
         // Tooltips
@@ -294,6 +300,7 @@ export const LOCALES = {
         'desc.blood_pool': 'Quantidade de vitae vampírica em seu sistema.',
 
         // Níveis de Vitalidade
+        'health.level.-1': 'OK',
         'health.level.0': 'Escoriado',
         'health.level.1': 'Machucado (-1)',
         'health.level.2': 'Ferido (-1)',
@@ -305,8 +312,13 @@ export const LOCALES = {
         // Actions
         'action.embrace': 'Abraçar',
         'action.edit': 'Editar',
+        'action.delete': 'Excluir',
         'action.update': 'Atualizar',
         'action.updated': 'Personagem atualizado com sucesso!',
+        'action.created': 'Personagem Abraçado com sucesso!',
+        'action.deleted': 'O Membro encontrou a Morte Final.',
+        'action.confirm_delete': 'Tem certeza de que deseja destruir este Membro?',
+        'action.error': 'Ocorreu um erro ao salvar.',
         'action.add_discipline': '+ Adicionar Disciplina',
 
         // Tooltips
