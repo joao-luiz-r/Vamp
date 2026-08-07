@@ -2,6 +2,10 @@
   <img src="docs/banner.png" alt="Vampire Archives Banner" width="100%" />
 </p>
 
+<p align="center">
+  <a href="README.md">🇧🇷 Português</a> · <a href="README.en.md">🇺🇸 English</a>
+</p>
+
 <h1 align="center">🦇 Vampire Archives</h1>
 
 <p align="center">
