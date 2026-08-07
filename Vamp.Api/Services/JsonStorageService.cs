@@ -8,9 +8,9 @@ namespace Vamp.Api.Services
         private readonly string _filePath;
         private readonly object _lock = new object();
 
-        public JsonStorageService(IWebHostEnvironment env)
+        public JsonStorageService(string? overridePath = null)
         {
-            _filePath = Path.Combine(env.ContentRootPath, "characters.json");
+            _filePath = overridePath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "characters.json");
             EnsureFileExists();
         }
 

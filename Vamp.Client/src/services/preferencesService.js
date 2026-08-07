@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5022/api/preferences'; // Using HTTP instead of HTTPS
+const API_URL = '/api/preferences'; // Using relative path
 
 export const preferencesService = {
     getLanguage: async () => {

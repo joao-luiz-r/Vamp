@@ -22,11 +22,7 @@ namespace Vamp.Api.Tests
             Directory.CreateDirectory(_testRootPath);
             _jsonFilePath = Path.Combine(_testRootPath, "characters.json");
 
-            // Ainda precisamos passar o ambiente para o serviço, mas agora ele apontará para uma pasta real
-            var mockEnv = new Mock<IWebHostEnvironment>();
-            mockEnv.Setup(m => m.ContentRootPath).Returns(_testRootPath);
-            
-            _service = new JsonStorageService(mockEnv.Object);
+            _service = new JsonStorageService(_jsonFilePath);
         }
 
         [Fact]

@@ -5,20 +5,25 @@ namespace Vamp.Api.Services
 {
     public class XmlPreferencesService : IPreferencesService
     {
-        private const string FilePath = "user_preferences.xml";
+        private readonly string _filePath;
         private const string RootElement = "UserPreferences";
         private const string LanguageElement = "Language";
 
+        public XmlPreferencesService(string? overridePath = null)
+        {
+            _filePath = overridePath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "user_preferences.xml");
+        }
+
         public string GetLanguage()
         {
-            if (!File.Exists(FilePath))
+            if (!File.Exists(_filePath))
             {
                 return "en"; // Default
             }
 
             try
             {
-                var doc = XDocument.Load(FilePath);
+                var doc = XDocument.Load(_filePath);
                 return doc.Root?.Element(LanguageElement)?.Value ?? "en";
             }
             catch
@@ -30,9 +35,9 @@ namespace Vamp.Api.Services
         public void SetLanguage(string language)
         {
             XDocument doc;
-            if (File.Exists(FilePath))
+            if (File.Exists(_filePath))
             {
-                doc = XDocument.Load(FilePath);
+                doc = XDocument.Load(_filePath);
             }
             else
             {
@@ -54,7 +59,7 @@ namespace Vamp.Api.Services
                 langElem.Value = language;
             }
 
-            doc.Save(FilePath);
+            doc.Save(_filePath);
         }
     }
 }

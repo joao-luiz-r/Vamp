@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5022/api/character';
+const API_URL = '/api/character';
 
 export const characterService = {
     getAll: async () => {
