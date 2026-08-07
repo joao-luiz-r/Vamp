@@ -5,6 +5,7 @@ import { characterService } from './services/characterService';
 import VampireLogo from './components/VampireLogo';
 import { useLocalization } from './context/LocalizationContext';
 import { useToast } from './context/ToastContext';
+import { useConfirm } from './context/ConfirmContext';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const { t } = useLocalization();
   const { showToast } = useToast() || {};
+  const { requestConfirm } = useConfirm();
 
   useEffect(() => {
     fetchCharacters();
@@ -42,7 +44,8 @@ function App() {
   const handleDeleteCharacter = async () => {
     if (!selectedCharacter) return;
     const confirmMessage = t('action.confirm_delete') || 'Are you sure you want to delete this Kindred?';
-    if (window.confirm(confirmMessage)) {
+    const confirmed = await requestConfirm(confirmMessage);
+    if (confirmed) {
       try {
         await characterService.delete(selectedCharacter.id);
         const updatedList = characters.filter(c => c.id !== selectedCharacter.id);
