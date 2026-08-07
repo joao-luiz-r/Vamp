@@ -31,5 +31,15 @@ export const characterService = {
             throw new Error('Failed to update character');
         }
         return response.json();
+    },
+
+    delete: async (id) => {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error('Failed to delete character');
+        }
+        return true;
     }
 };

@@ -3,7 +3,7 @@ import { useLocalization } from '../context/LocalizationContext';
 import Tooltip from './Tooltip';
 import DotsInput from './DotsInput';
 
-const CharacterSheet = ({ character, onEdit }) => {
+const CharacterSheet = ({ character, onEdit, onDelete }) => {
     const { t } = useLocalization();
 
     if (!character) return null;
@@ -33,35 +33,68 @@ const CharacterSheet = ({ character, onEdit }) => {
 
     return (
         <div className="card" style={{ position: 'relative' }}>
-            <button
-                onClick={onEdit}
-                style={{
-                    position: 'absolute',
-                    top: '20px',
-                    right: '20px',
-                    background: 'rgba(139, 0, 0, 0.1)',
-                    color: '#8b0000',
-                    border: '1px solid #8b0000',
-                    padding: '8px 16px',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    fontFamily: 'Cinzel',
-                    fontWeight: 'bold',
-                    fontSize: '0.8rem',
-                    transition: 'all 0.2s',
-                    zIndex: 10
-                }}
-                onMouseOver={(e) => {
-                    e.currentTarget.style.background = '#8b0000';
-                    e.currentTarget.style.color = 'white';
-                }}
-                onMouseOut={(e) => {
-                    e.currentTarget.style.background = 'rgba(139, 0, 0, 0.1)';
-                    e.currentTarget.style.color = '#8b0000';
-                }}
-            >
-                {t('action.edit') || 'EDIT'}
-            </button>
+            <div style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                display: 'flex',
+                gap: '8px',
+                zIndex: 10
+            }}>
+                <button
+                    onClick={onEdit}
+                    style={{
+                        background: 'rgba(139, 0, 0, 0.1)',
+                        color: '#8b0000',
+                        border: '1px solid #8b0000',
+                        padding: '8px 16px',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        fontFamily: 'Cinzel',
+                        fontWeight: 'bold',
+                        fontSize: '0.8rem',
+                        transition: 'all 0.2s'
+                    }}
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.background = '#8b0000';
+                        e.currentTarget.style.color = 'white';
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.background = 'rgba(139, 0, 0, 0.1)';
+                        e.currentTarget.style.color = '#8b0000';
+                    }}
+                >
+                    {t('action.edit') || 'EDIT'}
+                </button>
+
+                {onDelete && (
+                    <button
+                        onClick={onDelete}
+                        style={{
+                            background: 'rgba(75, 0, 0, 0.2)',
+                            color: '#e63946',
+                            border: '1px solid #700',
+                            padding: '8px 16px',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontFamily: 'Cinzel',
+                            fontWeight: 'bold',
+                            fontSize: '0.8rem',
+                            transition: 'all 0.2s'
+                        }}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.background = '#a00000';
+                            e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.background = 'rgba(75, 0, 0, 0.2)';
+                            e.currentTarget.style.color = '#e63946';
+                        }}
+                    >
+                        {t('action.delete') || 'DELETE'}
+                    </button>
+                )}
+            </div>
             <br />
             <h1 style={{ textAlign: 'center', fontFamily: 'Cinzel', border: 'none', fontSize: '3rem' }}>{t('header.title')}</h1>
             <h3 style={{ textAlign: 'center', border: 'none', marginTop: '-1rem', letterSpacing: '8px' }}>{t('header.subtitle')}</h3>

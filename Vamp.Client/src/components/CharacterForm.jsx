@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { characterService } from '../services/characterService';
 import { useLocalization } from '../context/LocalizationContext';
+import { useToast } from '../context/ToastContext';
 import { CLANS, DISCIPLINES, ARCHETYPES } from '../constants/vtmRules';
 import AttributesSection from './Create/AttributesSection';
 import AbilitiesSection from './Create/AbilitiesSection';
@@ -10,6 +11,7 @@ import Tooltip from './Tooltip';
 
 const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
     const { t, language } = useLocalization();
+    const { showToast } = useToast() || {};
     const [character, setCharacter] = useState({
         name: '',
         player: '',
@@ -115,16 +117,16 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
 
             if (initialCharacter?.id) {
                 savedChar = await characterService.update(initialCharacter.id, charToSave);
-                alert(t('action.updated') || 'Character updated!');
+                if (showToast) showToast(t('action.updated') || 'Character updated!', 'success');
             } else {
                 savedChar = await characterService.create(charToSave);
-                alert(t('action.created'));
+                if (showToast) showToast(t('action.created') || 'Character created!', 'success');
             }
 
             onCharacterCreated(savedChar);
         } catch (error) {
             console.error('Error:', error);
-            alert(t('action.error'));
+            if (showToast) showToast(t('action.error') || 'An error occurred.', 'error');
         }
     };
 
@@ -150,20 +152,20 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                     <div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.name')}>
-                                <label>{t('label.name')}</label>
-                                <input type="text" name="name" value={character.name || ''} onChange={handleChange} placeholder={t('placeholder.name')} required />
+                                <label htmlFor="char-name">{t('label.name')}</label>
+                                <input id="char-name" type="text" name="name" value={character.name || ''} onChange={handleChange} placeholder={t('placeholder.name')} required />
                             </Tooltip>
                         </div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.player')}>
-                                <label>{t('label.player')}</label>
-                                <input type="text" name="player" value={character.player || ''} onChange={handleChange} placeholder={t('placeholder.player')} />
+                                <label htmlFor="char-player">{t('label.player')}</label>
+                                <input id="char-player" type="text" name="player" value={character.player || ''} onChange={handleChange} placeholder={t('placeholder.player')} />
                             </Tooltip>
                         </div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.chronicle')}>
-                                <label>{t('label.chronicle')}</label>
-                                <input type="text" name="chronicle" value={character.chronicle || ''} onChange={handleChange} placeholder={t('placeholder.chronicle')} />
+                                <label htmlFor="char-chronicle">{t('label.chronicle')}</label>
+                                <input id="char-chronicle" type="text" name="chronicle" value={character.chronicle || ''} onChange={handleChange} placeholder={t('placeholder.chronicle')} />
                             </Tooltip>
                         </div>
                     </div>
@@ -172,8 +174,8 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                     <div>
                         <div className="form-group">
                             <Tooltip text={t(`tooltip.archetype_${(character.nature || '').toLowerCase().replace(/\s+/g, '_')}`) || t('tooltip.nature')}>
-                                <label>{t('label.nature')}</label>
-                                <select name="nature" value={character.nature || ''} onChange={handleChange}>
+                                <label htmlFor="char-nature">{t('label.nature')}</label>
+                                <select id="char-nature" name="nature" value={character.nature || ''} onChange={handleChange}>
                                     <option value="">{t('placeholder.select_nature')}</option>
                                     {ARCHETYPES.map(arch => (
                                         <option key={arch} value={arch}>{t(`archetype.${(arch || '').toLowerCase().replace(/\s+/g, '_')}`)}</option>
@@ -183,8 +185,8 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                         </div>
                         <div className="form-group">
                             <Tooltip text={t(`tooltip.archetype_${(character.demeanor || '').toLowerCase().replace(/\s+/g, '_')}`) || t('tooltip.demeanor')}>
-                                <label>{t('label.demeanor')}</label>
-                                <select name="demeanor" value={character.demeanor || ''} onChange={handleChange}>
+                                <label htmlFor="char-demeanor">{t('label.demeanor')}</label>
+                                <select id="char-demeanor" name="demeanor" value={character.demeanor || ''} onChange={handleChange}>
                                     <option value="">{t('placeholder.select_demeanor')}</option>
                                     {ARCHETYPES.map(arch => (
                                         <option key={arch} value={arch}>{t(`archetype.${(arch || '').toLowerCase().replace(/\s+/g, '_')}`)}</option>
@@ -194,8 +196,8 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                         </div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.concept')}>
-                                <label>{t('label.concept')}</label>
-                                <input type="text" name="concept" value={character.concept || ''} onChange={handleChange} placeholder={t('placeholder.concept')} />
+                                <label htmlFor="char-concept">{t('label.concept')}</label>
+                                <input id="char-concept" type="text" name="concept" value={character.concept || ''} onChange={handleChange} placeholder={t('placeholder.concept')} />
                             </Tooltip>
                         </div>
                     </div>
@@ -204,8 +206,8 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                     <div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.clan')}>
-                                <label>{t('label.clan')}</label>
-                                <select name="clan" value={character.clan || ''} onChange={handleChange} required>
+                                <label htmlFor="char-clan">{t('label.clan')}</label>
+                                <select id="char-clan" name="clan" value={character.clan || ''} onChange={handleChange} required>
                                     <option value="">{t('placeholder.select_clan')}</option>
                                     {CLANS.map(c => (
                                         <option key={c.name} value={c.name}>{c.name}</option>
@@ -228,14 +230,14 @@ const CharacterForm = ({ onCharacterCreated, initialCharacter }) => {
                         </div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.generation')}>
-                                <label>{t('label.generation')}</label>
-                                <input type="number" name="generation" value={character.generation || 13} onChange={handleChange} />
+                                <label htmlFor="char-generation">{t('label.generation')}</label>
+                                <input id="char-generation" type="number" name="generation" value={character.generation || 13} onChange={handleChange} />
                             </Tooltip>
                         </div>
                         <div className="form-group">
                             <Tooltip text={t('tooltip.sire')}>
-                                <label>{t('label.sire')}</label>
-                                <input type="text" name="sire" value={character.sire || ''} onChange={handleChange} placeholder={t('placeholder.sire')} />
+                                <label htmlFor="char-sire">{t('label.sire')}</label>
+                                <input id="char-sire" type="text" name="sire" value={character.sire || ''} onChange={handleChange} placeholder={t('placeholder.sire')} />
                             </Tooltip>
                         </div>
                     </div>

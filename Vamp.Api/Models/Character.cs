@@ -1,11 +1,16 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Vamp.Api.Models
 {
     public class Character
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Character name is required.")]
+        [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters.")]
         public string Name { get; set; } = string.Empty;
+
         public string Player { get; set; } = string.Empty;
         public string Chronicle { get; set; } = string.Empty;
         public string Language { get; set; } = "En-Us";
@@ -17,7 +22,10 @@ namespace Vamp.Api.Models
         
         // Clan info
         public string Clan { get; set; } = string.Empty;
+
+        [Range(3, 16, ErrorMessage = "Generation must be between 3 and 16.")]
         public int Generation { get; set; } = 13;
+
         public string Sire { get; set; } = string.Empty;
 
         public Attributes Attributes { get; set; } = new Attributes();
@@ -25,9 +33,16 @@ namespace Vamp.Api.Models
         public List<Discipline> Disciplines { get; set; } = new List<Discipline>();
 
         // New Essence fields
+        [Range(0, 10, ErrorMessage = "Willpower must be between 0 and 10.")]
         public int Willpower { get; set; } = 5;
+
+        [Range(0, 10, ErrorMessage = "Humanity must be between 0 and 10.")]
         public int Humanity { get; set; } = 7;
+
+        [Range(-1, 6, ErrorMessage = "Health level must be between -1 and 6.")]
         public int Health { get; set; } = -1; // -1 means OK (No damage)
+
+        [Range(0, 50, ErrorMessage = "Blood pool must be between 0 and 50.")]
         public int BloodPool { get; set; } = 10;
     }
 

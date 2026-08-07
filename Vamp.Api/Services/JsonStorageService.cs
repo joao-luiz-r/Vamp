@@ -33,18 +33,38 @@ namespace Vamp.Api.Services
             {
                 try
                 {
+                    if (!File.Exists(_filePath))
+                    {
+                        return new CharacterStorage { NextId = 1, Characters = new List<Character>() };
+                    }
+
                     var options = new JsonSerializerOptions 
                     { 
                         PropertyNameCaseInsensitive = true,
                         PropertyNamingPolicy = JsonNamingPolicy.CamelCase 
                     };
                     var json = File.ReadAllText(_filePath);
-                    return JsonSerializer.Deserialize<CharacterStorage>(json, options) 
-                        ?? new CharacterStorage { NextId = 1, Characters = new List<Character>() };
+                    var result = JsonSerializer.Deserialize<CharacterStorage>(json, options);
+                    return result ?? new CharacterStorage { NextId = 1, Characters = new List<Character>() };
                 }
                 catch (Exception ex)
                 {
                     Console.Error.WriteLine($"Error reading characters.json: {ex.Message}");
+                    // Preserve corrupt file as .bak for recovery before resetting
+                    try
+                    {
+                        var bakPath = _filePath + ".corrupt." + DateTime.UtcNow.Ticks + ".bak";
+                        if (File.Exists(_filePath))
+                        {
+                            File.Copy(_filePath, bakPath, overwrite: true);
+                            Console.Error.WriteLine($"Corrupt storage file backed up to {bakPath}");
+                        }
+                    }
+                    catch (Exception bakEx)
+                    {
+                        Console.Error.WriteLine($"Failed to backup corrupt file: {bakEx.Message}");
+                    }
+
                     return new CharacterStorage { NextId = 1, Characters = new List<Character>() };
                 }
             }
@@ -62,7 +82,9 @@ namespace Vamp.Api.Services
                         PropertyNamingPolicy = JsonNamingPolicy.CamelCase 
                     };
                     var json = JsonSerializer.Serialize(storage, options);
-                    File.WriteAllText(_filePath, json);
+                    var tempPath = _filePath + ".tmp";
+                    File.WriteAllText(tempPath, json);
+                    File.Move(tempPath, _filePath, overwrite: true);
                 }
                 catch (Exception ex)
                 {

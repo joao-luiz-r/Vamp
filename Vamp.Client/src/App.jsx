@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import CharacterForm from './components/CharacterForm';
 import CharacterSheet from './components/CharacterSheet';
 import { characterService } from './services/characterService';
-
 import VampireLogo from './components/VampireLogo';
 import { useLocalization } from './context/LocalizationContext';
-
+import { useToast } from './context/ToastContext';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const { t } = useLocalization();
+  const { showToast } = useToast() || {};
 
   useEffect(() => {
     fetchCharacters();
@@ -37,6 +37,24 @@ function App() {
     await fetchCharacters();
     setSelectedCharacter(updatedCharacter);
     setIsEditing(false);
+  };
+
+  const handleDeleteCharacter = async () => {
+    if (!selectedCharacter) return;
+    const confirmMessage = t('action.confirm_delete') || 'Are you sure you want to delete this Kindred?';
+    if (window.confirm(confirmMessage)) {
+      try {
+        await characterService.delete(selectedCharacter.id);
+        const updatedList = characters.filter(c => c.id !== selectedCharacter.id);
+        setCharacters(updatedList);
+        setSelectedCharacter(null);
+        setIsEditing(false);
+        if (showToast) showToast(t('action.deleted') || 'Character deleted.', 'error');
+      } catch (err) {
+        console.error('Error deleting character:', err);
+        if (showToast) showToast(t('action.error') || 'Error deleting character.', 'error');
+      }
+    }
   };
 
   const handleEditCharacter = () => {
@@ -182,6 +200,7 @@ function App() {
               <CharacterSheet
                 character={selectedCharacter}
                 onEdit={handleEditCharacter}
+                onDelete={handleDeleteCharacter}
               />
             )
           ) : (
