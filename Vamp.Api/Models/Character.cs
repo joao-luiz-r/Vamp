@@ -23,7 +23,7 @@ namespace Vamp.Api.Models
         // Clan info
         public string Clan { get; set; } = string.Empty;
 
-        [Range(3, 16, ErrorMessage = "Generation must be between 3 and 16.")]
+        [Range(4, 16, ErrorMessage = "Generation must be between 4 and 16.")]
         public int Generation { get; set; } = 13;
 
         public string Sire { get; set; } = string.Empty;
@@ -31,6 +31,8 @@ namespace Vamp.Api.Models
         public Attributes Attributes { get; set; } = new Attributes();
         public Abilities Abilities { get; set; } = new Abilities();
         public List<Discipline> Disciplines { get; set; } = new List<Discipline>();
+        public Virtues Virtues { get; set; } = new Virtues();
+        public Dictionary<string, int> Backgrounds { get; set; } = new Dictionary<string, int>();
 
         // New Essence fields
         [Range(0, 10, ErrorMessage = "Willpower must be between 0 and 10.")]
@@ -44,6 +46,50 @@ namespace Vamp.Api.Models
 
         [Range(0, 50, ErrorMessage = "Blood pool must be between 0 and 50.")]
         public int BloodPool { get; set; } = 10;
+
+        // Morality Path (V20) - Humanity is the default; other Paths may be chosen
+        public string Path { get; set; } = "Humanity";
+
+        // Experience Points (V20)
+        [Range(0, 10000, ErrorMessage = "Experience must be between 0 and 10000.")]
+        public int Experience { get; set; } = 0;
+
+        // Merits & Flaws (V20)
+        public List<MeritFlaw> Merits { get; set; } = new List<MeritFlaw>();
+        public List<MeritFlaw> Flaws { get; set; } = new List<MeritFlaw>();
+
+        // Other Traits (V20) - free-form traits with a rating
+        public List<OtherTrait> OtherTraits { get; set; } = new List<OtherTrait>();
+
+        // Narrative / sheet extras
+        public string Weakness { get; set; } = string.Empty;
+        public string Possessions { get; set; } = string.Empty;
+        public string History { get; set; } = string.Empty;
+        public string Prelude { get; set; } = string.Empty;
+    }
+
+    public class MeritFlaw
+    {
+        public string Name { get; set; } = string.Empty;
+        public int Cost { get; set; } = 0;
+    }
+
+    public class OtherTrait
+    {
+        public string Name { get; set; } = string.Empty;
+        public int Value { get; set; } = 0;
+    }
+
+    public class Virtues
+    {
+        [Range(0, 5, ErrorMessage = "Conscience must be between 0 and 5.")]
+        public int Conscience { get; set; } = 3;
+
+        [Range(0, 5, ErrorMessage = "Self-Control must be between 0 and 5.")]
+        public int SelfControl { get; set; } = 3;
+
+        [Range(0, 5, ErrorMessage = "Courage must be between 0 and 5.")]
+        public int Courage { get; set; } = 3;
     }
 
     public class Attributes

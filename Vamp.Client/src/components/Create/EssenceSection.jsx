@@ -1,9 +1,11 @@
 import React from 'react';
 import AttributeInput from '../AttributeInput';
 import Tooltip from '../Tooltip';
+import { bloodPoolByGeneration } from '../../constants/vtmRules';
 
-const EssenceSection = ({ willpower, humanity, health, bloodPool, onChange, t }) => {
+const EssenceSection = ({ willpower, humanity, health, bloodPool, generation, onChange, t }) => {
     const healthLevels = [-1, 0, 1, 2, 3, 4, 5, 6];
+    const bloodPoolMax = bloodPoolByGeneration(generation);
 
     return (
         <div className="essence-section" style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
@@ -26,14 +28,28 @@ const EssenceSection = ({ willpower, humanity, health, bloodPool, onChange, t })
                     max={10}
                 />
 
-                <AttributeInput
-                    label={t('label.blood_pool')}
-                    value={bloodPool}
-                    onChange={(val) => onChange('bloodPool', val)}
-                    description={t('desc.blood_pool')}
-                    attributeName="blood_pool"
-                    max={10}
-                />
+                <div className="form-group">
+                    <Tooltip text={t('desc.blood_pool')}>
+                        <label style={{ cursor: 'help' }}>{t('label.blood_pool')}</label>
+                    </Tooltip>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <span style={{ fontVariant: 'small-caps', fontWeight: 'bold', fontSize: '0.85rem' }}>
+                            {t('label.current')}:
+                        </span>
+                        <input
+                            type="number"
+                            min={0}
+                            max={bloodPoolMax}
+                            value={bloodPool ?? 0}
+                            onChange={(e) => onChange('bloodPool', parseInt(e.target.value) || 0)}
+                            aria-label={t('label.blood_pool')}
+                            style={{ maxWidth: '80px' }}
+                        />
+                        <span style={{ fontVariant: 'small-caps', fontWeight: 'bold', fontSize: '0.85rem' }}>
+                            {t('label.max')}: {bloodPoolMax}
+                        </span>
+                    </div>
+                </div>
             </div>
 
             <div className="card">

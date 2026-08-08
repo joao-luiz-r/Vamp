@@ -9,7 +9,7 @@
 <h1 align="center">🦇 Vampire Archives</h1>
 
 <p align="center">
-  <strong>Digital Character Sheet for Vampire: The Masquerade (3rd Edition)</strong>
+  <strong>Digital Character Sheet for Vampire: The Masquerade (20th Anniversary Edition — V20)</strong>
 </p>
 
 <p align="center">
@@ -24,13 +24,15 @@
 
 ## 📖 About the Project
 
-**Vampire Archives** is a local application for creating, editing and managing character sheets for the tabletop RPG **Vampire: The Masquerade**, faithfully following the rules and aesthetics of the **3rd Edition**.
+**Vampire Archives** is a local application for creating, editing and managing character sheets for the tabletop RPG **Vampire: The Masquerade**, faithfully following the rules and aesthetics of the **20th Anniversary Edition (V20)**.
 
 The application was designed to be **portable and offline** — it runs locally with no database, cloud, or complex installation required. All storage is done via JSON and XML files in the application's own directory.
 
 ### ✨ Highlights
 
-- 🎭 **Complete official sheet** — Attributes, Abilities, Disciplines, Essence (Willpower, Humanity, Health, Blood Pool)
+- 🎭 **Complete official sheet** — Attributes, Abilities, Disciplines, Virtues, Backgrounds and Essence (Willpower, Humanity, Health, Blood Pool)
+- ⚙️ **V20 rule automations** — Weakness, Disciplines, Appearance (Nosferatu), Blood Pool, Willpower and Humanity auto-filled
+- 📄 **PDF export** — Print the sheet in A4 format with a single click
 - 🏰 **Immersive gothic interface** — Design inspired by aged parchment with Cinzel typography, crimson accents and smooth animations
 - 🌐 **Bilingual** — Full interface in English (En-Us) and Brazilian Portuguese (Pt-Br), with instant switching
 - 🎲 **Faithful points system** — Dot-based input exactly like the original sheet in the book
@@ -133,7 +135,10 @@ Vamp/
 │       │       ├── AttributesSection.jsx
 │       │       ├── AbilitiesSection.jsx
 │       │       ├── DisciplinesSection.jsx
-│       │       └── EssenceSection.jsx
+│       │       ├── VirtuesBackgroundsSection.jsx
+│       │       ├── EssenceSection.jsx
+│       │       ├── MeritsFlawsSection.jsx
+│       │       └── NotesSection.jsx
 │       ├── context/
 │       │   ├── LocalizationContext.jsx  # i18n provider
 │       │   ├── ToastContext.jsx         # Gothic toast notifications
@@ -159,7 +164,7 @@ Vamp/
 
 ### Character Sheet
 
-The sheet faithfully follows the **3rd Edition** Vampire: The Masquerade layout:
+The sheet faithfully follows the **20th Anniversary Edition (V20)** Vampire: The Masquerade layout:
 
 | Section | Fields | Details |
 |-------|--------|---------|
@@ -167,7 +172,26 @@ The sheet faithfully follows the **3rd Edition** Vampire: The Masquerade layout:
 | **Attributes** | Strength, Dexterity, Stamina / Charisma, Manipulation, Appearance / Perception, Intelligence, Wits | 3 categories (Physical, Social, Mental) in a grid layout |
 | **Abilities** | 10 Talents, 10 Skills, 10 Knowledges | 30 official skills from the core book |
 | **Disciplines** | Dynamic per clan | Automatically filtered by the selected clan |
-| **Essence** | Willpower, Humanity, Health, Blood Pool | Validated ranges (e.g. Generation 3-16, Humanity 0-10) |
+| **Virtues** | Conscience, Self-Control, Courage | Standard V20 morality track |
+| **Backgrounds** | Allies, Contacts, Fame, Generation, Herd, Influence, Mentor, Resources, Retainers, Status | The 10 official V20 backgrounds |
+| **Essence** | Willpower, Humanity, Health, Blood Pool | Validated ranges (e.g. Generation 4-16, Humanity 0-10) |
+
+### ⚙️ V20 Rule Automations
+
+To speed up creation and stay faithful to the 20th Anniversary Edition rules, the form automatically applies:
+
+| Automation | V20 Rule | Behavior |
+|-----------|-----------|----------|
+| **Clan Weakness** | Clan Bane | Auto-filled when a Clan is selected (read-only field) |
+| **Clan Disciplines** | Starting disciplines | The Clan's 3 disciplines are added at level 0; switching Clans replaces the previous ones |
+| **Appearance (Nosferatu)** | Appearance 0 | Selecting Nosferatu zeroes Appearance automatically |
+| **Blood Pool** | Maximum by Generation | Synced to the selected Generation maximum (e.g. Gen 13 → 10, Gen 10 → 13) |
+| **Willpower** | Willpower = Courage | Synced to the Courage rating |
+| **Humanity** | Humanity = Conscience + Self-Control | Recalculated when Conscience or Self-Control change (max 10) |
+
+### 📄 PDF Export
+
+The sheet can be exported to PDF with a single click on the **Export PDF** button. Printing uses dedicated styles (`@media print`) that produce a clean A4 layout faithful to the on-screen view.
 
 ### Available Clans
 
@@ -288,7 +312,10 @@ The `Character` model uses .NET validation annotations to guarantee integrity:
 
 ```csharp
 [Required] Name              // Required
-[Range(3, 16)] Generation    // Valid VtM generations
+[Range(4, 16)] Generation    // Valid V20 generations
+[Range(0, 5)] Conscience     // Conscience (Virtue)
+[Range(0, 5)] SelfControl    // Self-Control (Virtue)
+[Range(0, 5)] Courage        // Courage (Virtue)
 [Range(0, 10)] Willpower     // Willpower
 [Range(0, 10)] Humanity      // Humanity
 [Range(0, 50)] BloodPool     // Blood Pool

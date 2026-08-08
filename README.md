@@ -9,7 +9,7 @@
 <h1 align="center">🦇 Vampire Archives</h1>
 
 <p align="center">
-  <strong>Ficha de Personagem Digital para Vampiro: A Máscara (3ª Edição)</strong>
+  <strong>Ficha de Personagem Digital para Vampiro: A Máscara (Edição de 20º Aniversário — V20)</strong>
 </p>
 
 <p align="center">
@@ -24,13 +24,15 @@
 
 ## 📖 Sobre o Projeto
 
-**Vampire Archives** é uma aplicação local para criação, edição e gerenciamento de fichas de personagem do RPG de mesa **Vampiro: A Máscara (Vampire: The Masquerade)**, seguindo fielmente as regras e a estética da **3ª Edição**.
+**Vampire Archives** é uma aplicação local para criação, edição e gerenciamento de fichas de personagem do RPG de mesa **Vampiro: A Máscara (Vampire: The Masquerade)**, seguindo fielmente as regras e a estética da **Edição de 20º Aniversário (V20)**.
 
 A aplicação foi projetada para ser **portátil e offline** — roda localmente sem necessidade de banco de dados, cloud ou qualquer instalação complexa. Todo o armazenamento é feito em arquivos JSON e XML no próprio diretório da aplicação.
 
 ### ✨ Destaques
 
-- 🎭 **Ficha oficial completa** — Atributos, Habilidades, Disciplinas, Essência (Força de Vontade, Humanidade, Vitalidade, Parada de Sangue)
+- 🎭 **Ficha oficial completa** — Atributos, Habilidades, Disciplinas, Virtudes, Antecedentes e Essência (Força de Vontade, Humanidade, Vitalidade, Parada de Sangue)
+- ⚙️ **Automações de regras V20** — Fraqueza, disciplinas, Aparência (Nosferatu), Parada de Sangue, Força de Vontade e Humanidade preenchidos automaticamente
+- 📄 **Exportação em PDF** — Imprima a ficha em formato A4 com um clique
 - 🏰 **Interface gótica imersiva** — Design inspirado em pergaminhos envelhecidos com tipografia Cinzel, acentos em carmesim e animações suaves
 - 🌐 **Bilíngue** — Interface completa em Inglês (En-Us) e Português Brasileiro (Pt-Br), com troca instantânea
 - 🎲 **Sistema de pontos fiel** — Input por bolinhas (dots) exatamente como na ficha original do livro
@@ -133,7 +135,10 @@ Vamp/
 │       │       ├── AttributesSection.jsx
 │       │       ├── AbilitiesSection.jsx
 │       │       ├── DisciplinesSection.jsx
-│       │       └── EssenceSection.jsx
+│       │       ├── VirtuesBackgroundsSection.jsx
+│       │       ├── EssenceSection.jsx
+│       │       ├── MeritsFlawsSection.jsx
+│       │       └── NotesSection.jsx
 │       ├── context/
 │       │   ├── LocalizationContext.jsx  # Provider de internacionalização
 │       │   ├── ToastContext.jsx         # Notificações toast góticas
@@ -159,7 +164,7 @@ Vamp/
 
 ### Ficha de Personagem
 
-A ficha segue fielmente o layout da **3ª Edição** do Vampiro: A Máscara:
+A ficha segue fielmente o layout da **Edição de 20º Aniversário (V20)** do Vampiro: A Máscara:
 
 | Seção | Campos | Detalhes |
 |-------|--------|---------|
@@ -167,7 +172,26 @@ A ficha segue fielmente o layout da **3ª Edição** do Vampiro: A Máscara:
 | **Atributos** | Força, Destreza, Vigor / Carisma, Manipulação, Aparência / Percepção, Inteligência, Raciocínio | 3 categorias (Físicos, Sociais, Mentais) com layout em grid |
 | **Habilidades** | 10 Talentos, 10 Perícias, 10 Conhecimentos | 30 habilidades oficiais do livro base |
 | **Disciplinas** | Dinâmicas por clã | Filtradas automaticamente pelo clã selecionado |
-| **Essência** | Força de Vontade, Humanidade, Vitalidade, Parada de Sangue | Ranges validados (ex: Geração 3-16, Humanidade 0-10) |
+| **Virtudes** | Consciência, Autocontrole, Coragem | Trilha padrão de moralidade do V20 |
+| **Antecedentes** | Aliados, Contatos, Fama, Geração, Rebanho, Influência, Mentor, Recursos, Subordinados, Status | Os 10 antecedentes oficiais do V20 |
+| **Essência** | Força de Vontade, Humanidade, Vitalidade, Parada de Sangue | Ranges validados (ex: Geração 4-16, Humanidade 0-10) |
+
+### ⚙️ Automações de Regras V20
+
+Para agilizar a criação e garantir fidelidade às regras da Edição de 20º Aniversário, o formulário aplica automaticamente:
+
+| Automação | Regra V20 | Comportamento |
+|-----------|-----------|---------------|
+| **Fraqueza do Clã** | Bane do clã | Preenchida automaticamente ao selecionar o clã (campo somente leitura) |
+| **Disciplinas do Clã** | Disciplinas iniciais | As 3 disciplinas do clã são adicionadas com nível 0; ao trocar de clã, as anteriores são substituídas |
+| **Aparência (Nosferatu)** | Aparência 0 | Ao selecionar Nosferatu, Aparência é zerada automaticamente |
+| **Parada de Sangue** | Máximo por Geração | Sincronizada com o máximo da Geração selecionada (ex: Gen 13 → 10, Gen 10 → 13) |
+| **Força de Vontade** | FdV = Coragem | Sincronizada com o valor de Coragem |
+| **Humanidade** | Humanidade = Consciência + Autocontrole | Recalculada automaticamente quando Consciência ou Autocontrole mudam (máx. 10) |
+
+### 📄 Exportação em PDF
+
+A ficha pode ser exportada em PDF com um clique no botão **Exportar PDF**. A impressão usa regras de estilo específicas (`@media print`) que produzem um layout limpo em páginas A4, fiel à visualização em tela.
 
 ### Clãs Disponíveis
 
@@ -176,7 +200,7 @@ A ficha segue fielmente o layout da **3ª Edição** do Vampiro: A Máscara:
 | 🦁 Ventrue | Dominação, Fortitude, Presença |
 | 🔥 Brujah | Celeridade, Potência, Presença |
 | 🌹 Toreador | Auspícios, Celeridade, Presença |
-| 🐺 Gangrel | Animalismo, Fortitude, Metamorfose |
+| 🐺 Gangrel | Animalismo, Fortitude, Proteano |
 | 🎭 Malkavian | Auspícios, Demência, Ofuscação |
 | 🐀 Nosferatu | Animalismo, Ofuscação, Potência |
 | 🔮 Tremere | Auspícios, Dominação, Taumaturgia |
@@ -288,7 +312,10 @@ O modelo `Character` utiliza anotações de validação do .NET para garantir in
 
 ```csharp
 [Required] Name              // Obrigatório
-[Range(3, 16)] Generation    // Gerações válidas do VtM
+[Range(4, 16)] Generation    // Gerações válidas do V20
+[Range(0, 5)] Conscience     // Consciência (Virtude)
+[Range(0, 5)] SelfControl    // Autocontrole (Virtude)
+[Range(0, 5)] Courage        // Coragem (Virtude)
 [Range(0, 10)] Willpower     // Força de Vontade
 [Range(0, 10)] Humanity      // Humanidade
 [Range(0, 50)] BloodPool     // Parada de Sangue
