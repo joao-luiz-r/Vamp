@@ -220,7 +220,13 @@ const CharacterSheet = ({ character, onEdit, onDelete }) => {
                 <div>
                     <h3 style={{ fontFamily: 'Cinzel', borderBottom: '1px solid #444', marginBottom: '1rem' }}>{t('label.disciplines')}</h3>
                     {(character.disciplines || []).map((disc, i) => (
-                        <AttributeBlock key={i} label={disc.name} value={disc.level} />
+                        <AttributeBlock
+                            key={i}
+                            labelKey={`discipline.${(disc.name || '').toLowerCase()}`}
+                            label={disc.name}
+                            value={disc.level}
+                            attributeName={(disc.name || '').toLowerCase()}
+                        />
                     ))}
                 </div>
                 <div>

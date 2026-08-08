@@ -7,12 +7,13 @@ const DisciplinesSection = ({ disciplines, onUpdate, onAdd, onRemove, availableD
         <div className="form-group">
             <h3>{t('label.disciplines')}</h3>
             {disciplines.map((disc, index) => {
-                const dotDescriptions = Array.from({ length: 5 }, (_, i) => t(`dot.discipline.${i + 1}`));
+                const discKey = disc.name ? disc.name.toLowerCase() : null;
+                const dotDescriptions = Array.from({ length: 5 }, (_, i) => discKey ? t(`dot.${discKey}.${i + 1}`) : t(`dot.discipline.${i + 1}`));
 
                 return (
                     <div key={index} style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', alignItems: 'center' }}>
                         <div style={{ flex: 1 }}>
-                            <Tooltip text={disc.name ? t(`desc.${disc.name.toLowerCase()}`) : t('tooltip.discipline_name')}>
+                            <Tooltip text={disc.name ? t(`desc.${discKey}`) : t('tooltip.discipline_name')}>
                                 <select
                                     value={disc.name}
                                     onChange={(e) => onUpdate(index, 'name', e.target.value)}
@@ -26,7 +27,7 @@ const DisciplinesSection = ({ disciplines, onUpdate, onAdd, onRemove, availableD
                                             title={t(`desc.${d.toLowerCase()}`)}
                                             style={{ fontWeight: clanDisciplines.includes(d) ? 'bold' : 'normal' }}
                                         >
-                                            {d} {clanDisciplines.includes(d) ? '*' : ''}
+                                            {t(`discipline.${d.toLowerCase()}`) || d} {clanDisciplines.includes(d) ? '*' : ''}
                                         </option>
                                     ))}
                                 </select>

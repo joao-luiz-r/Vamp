@@ -278,12 +278,90 @@ export const DOT_DESCRIPTIONS_EN = {
     'dot.blood_pool.9': '••••••••• Overflowing: You are pulsing with power.',
     'dot.blood_pool.10': '•••••••••• Bursting: You are at maximum capacity for your generation.',
 
-    // DISCIPLINE LEVELS (GENERIC)
+    // DISCIPLINE LEVELS (GENERIC FALLBACK)
     'dot.discipline.1': '• Level 1 Mastery',
     'dot.discipline.2': '•• Level 2 Mastery',
     'dot.discipline.3': '••• Level 3 Mastery',
     'dot.discipline.4': '•••• Level 4 Mastery',
     'dot.discipline.5': '••••• Level 5 Mastery',
+
+    // DISCIPLINE LEVELS (PER-DISCIPLINE POWERS)
+    // Animalism
+    'dot.animalism.1': '• Whispers of the Wild: You can communicate with animals and read their simple instincts.',
+    'dot.animalism.2': '•• Call of the Wild: Summon nearby animals and command them to do your bidding.',
+    'dot.animalism.3': '••• Subsume the Beast: Merge your consciousness with a nearby animal and act through it.',
+    'dot.animalism.4': '•••• Drawing Out the Beast / Quell the Beast: Awaken or calm the Beast (or a frenzy) in another Kindred.',
+    'dot.animalism.5': '••••• Master\'s Voice: Command both animals and Kindred to obey your will without resistance.',
+
+    // Auspex
+    'dot.auspex.1': '• Heightened Senses: Your senses vastly surpass mortal limits.',
+    'dot.auspex.2': '•• Aura Perception: Read the emotional auras of other beings.',
+    'dot.auspex.3': '••• The Spirit\'s Touch: Read psychic impressions left on objects.',
+    'dot.auspex.4': '•••• Telepathy: Communicate mind-to-mind with another being.',
+    'dot.auspex.5': '••••• Psychic Projection: Project your spirit free of your body to travel invisibly.',
+
+    // Celerity
+    'dot.celerity.1': '• Cat\'s Pace: Move with supernatural grace and balance.',
+    'dot.celerity.2': '•• Rapid Reflexes: React faster than any mortal could.',
+    'dot.celerity.3': '••• Fleetness: Move with extraordinary speed.',
+    'dot.celerity.4': '•••• Blurred Movement: Move so fast your body becomes a blur.',
+    'dot.celerity.5': '••••• Time Sense: Your perception of time becomes almost superhuman.',
+
+    // Dementation
+    'dot.dementation.1': '• Passion: Inflict a single overwhelming emotion upon a target.',
+    'dot.dementation.2': '•• The Haunting: Assault a victim\'s mind with hallucinations and creeping madness.',
+    'dot.dementation.3': '••• Eyes of Chaos: Perceive the hidden madness and chaos underlying reality.',
+    'dot.dementation.4': '•••• Voice of Madness: Drive a victim into a screaming frenzy of insanity.',
+    'dot.dementation.5': '••••• Total Insanity: Completely shatter a victim\'s mind and sanity.',
+
+    // Dominate
+    'dot.dominate.1': '• Command: Force a victim to obey a single-word command.',
+    'dot.dominate.2': '•• Mesmerize: Hypnotize a victim into carrying out a simple task.',
+    'dot.dominate.3': '••• The Forgetful Mind: Edit, implant, or erase memories.',
+    'dot.dominate.4': '•••• Conditioning: Instill a long-term subconscious command.',
+    'dot.dominate.5': '••••• Possession: Take complete control of a victim\'s body and mind.',
+
+    // Fortitude
+    'dot.fortitude.1': '• Resilience: Shrug off bashing and lethal damage with supernatural toughness.',
+    'dot.fortitude.2': '•• Endurance: Withstand great physical punishment.',
+    'dot.fortitude.3': '••• Fortitude of the Giants: Become truly difficult to harm.',
+    'dot.fortitude.4': '•••• Fortitude of the Flesh: Resist even aggravated damage.',
+    'dot.fortitude.5': '••••• Fortitude of the Heart: Endure mental, social and psychic attacks as easily as physical ones.',
+
+    // Obfuscate
+    'dot.obfuscate.1': '• Cloak of Shadows: Vanish into shadow while remaining still.',
+    'dot.obfuscate.2': '•• Unseen Presence: Move without being noticed even in plain sight.',
+    'dot.obfuscate.3': '••• Mask of 1,000 Faces: Alter your appearance at will.',
+    'dot.obfuscate.4': '•••• Vanish from the Mind\'s Eye: Become truly invisible to observers.',
+    'dot.obfuscate.5': '••••• Cloak the Gathering: Extend your invisibility to others nearby.',
+
+    // Potence
+    'dot.potence.1': '• Prowess: Lift and strike with supernatural strength.',
+    'dot.potence.2': '•• Might: Perform feats of strength impossible for mortals.',
+    'dot.potence.3': '••• Mega-Prowess: Deliver crushing blows and break objects easily.',
+    'dot.potence.4': '•••• Inhuman Strength: Effortlessly overpower nearly anything.',
+    'dot.potence.5': '••••• Fist of Caine: Your blows can shatter stone and armor.',
+
+    // Presence
+    'dot.presence.1': '• Awe: Instantly captivate a crowd with your magnetism.',
+    'dot.presence.2': '•• Dread Gaze: Paralyze a single target with supernatural terror.',
+    'dot.presence.3': '••• Entrancement: Enthrall a victim with overwhelming adoration.',
+    'dot.presence.4': '•••• Summon: Force a target to come to your presence.',
+    'dot.presence.5': '••••• Majesty: All who behold you are awed and reluctant to act against you.',
+
+    // Protean
+    'dot.protean.1': '• Eyes of the Beast: See perfectly in total darkness.',
+    'dot.protean.2': '•• Feral Claws: Grow claws that can rend flesh and stone.',
+    'dot.protean.3': '••• Earth Meld: Merge your body with the earth to hide or travel.',
+    'dot.protean.4': '•••• Shape of the Beast: Transform into a wolf or bat.',
+    'dot.protean.5': '••••• Mist Form: Dissolve your body into living mist.',
+
+    // Thaumaturgy
+    'dot.thaumaturgy.1': '• Path Initiation: Learn the first secrets of a Thaumaturgical path.',
+    'dot.thaumaturgy.2': '•• Apprentice: Wield lesser powers of the chosen path.',
+    'dot.thaumaturgy.3': '••• Disciple: Command intermediate powers and rituals.',
+    'dot.thaumaturgy.4': '•••• Adept: Master the advanced powers of the path.',
+    'dot.thaumaturgy.5': '••••• Master: Unlock the ultimate secrets of the path.',
 
     // VIRTUES (1-5)
     'dot.conscience.1': '• You have few qualms about your actions.',
@@ -649,6 +727,84 @@ export const DOT_DESCRIPTIONS_PT = {
     'dot.discipline.3': '••• Nível 3 de Domínio',
     'dot.discipline.4': '•••• Nível 4 de Domínio',
     'dot.discipline.5': '••••• Nível 5 de Domínio',
+
+    // NÍVEIS DE DISCIPLINA (PODERES POR DISCIPLINA)
+    // Animalismo
+    'dot.animalism.1': '• Sussurros da Natureza: Você pode se comunicar com animais e ler seus instintos simples.',
+    'dot.animalism.2': '•• Chamado da Natureza: Convoque animais próximos e ordene-os a fazer seu trabalho.',
+    'dot.animalism.3': '••• Subjugar a Besta: Funda sua consciência com a de um animal próximo e aja através dela.',
+    'dot.animalism.4': '•••• Extrair a Besta / Aquietar a Besta: Desperte ou acalme a Besta (ou um frenesi) em outro Membro.',
+    'dot.animalism.5': '••••• Voz do Mestre: Ordene a animais e Membros que obedeçam sua vontade sem resistência.',
+
+    // Auspícios
+    'dot.auspex.1': '• Sentidos Aguçados: Seus sentidos superam em muito os limites mortais.',
+    'dot.auspex.2': '•• Percepção de Aura: Leia as auras emocionais de outros seres.',
+    'dot.auspex.3': '••• Toque da Alma: Leia impressões psíquicas deixadas em objetos.',
+    'dot.auspex.4': '•••• Telepatia: Comunique-se mente a mente com outro ser.',
+    'dot.auspex.5': '••••• Projeção Psíquica: Projete seu espírito para fora do corpo e viaje invisível.',
+
+    // Celeridade
+    'dot.celerity.1': '• Passo Felino: Mova-se com graça e equilíbrio sobrenaturais.',
+    'dot.celerity.2': '•• Reflexos Rápidos: Reaja mais rápido do que qualquer mortal.',
+    'dot.celerity.3': '••• Rapidez: Mova-se com velocidade extraordinária.',
+    'dot.celerity.4': '•••• Movimento Borrão: Mova-se tão rápido que seu corpo vira um borrão.',
+    'dot.celerity.5': '••••• Senso de Tempo: Sua percepção do tempo torna-se quase sobre-humana.',
+
+    // Demência
+    'dot.dementation.1': '• Paixão: Infunda uma única emoção avassaladora em um alvo.',
+    'dot.dementation.2': '•• Assombração: Ataque a mente de uma vítima com alucinações e loucura crescente.',
+    'dot.dementation.3': '••• Olhos do Caos: Perceba a loucura e o caos ocultos sob a realidade.',
+    'dot.dementation.4': '•••• Voz da Loucura: Leve uma vítima a um frenesi histérico de insanidade.',
+    'dot.dementation.5': '••••• Insanidade Total: Estilhace por completo a mente e a sanidade de uma vítima.',
+
+    // Dominação
+    'dot.dominate.1': '• Comando: Force uma vítima a obedecer a uma ordem de uma única palavra.',
+    'dot.dominate.2': '•• Hipnotizar: Hipnotize uma vítima para executar uma tarefa simples.',
+    'dot.dominate.3': '••• A Mente Esquecida: Edite, implante ou apague memórias.',
+    'dot.dominate.4': '•••• Condicionamento: Instale um comando subconsciente de longo prazo.',
+    'dot.dominate.5': '••••• Posse: Assuma controle total do corpo e da mente de uma vítima.',
+
+    // Fortitude
+    'dot.fortitude.1': '• Resiliência: Resista a dano de contusão e letal com resistência sobrenatural.',
+    'dot.fortitude.2': '•• Vigor: Suporte grandes punições físicas.',
+    'dot.fortitude.3': '••• Fortitude dos Gigantes: Torne-se verdadeiramente difícil de ferir.',
+    'dot.fortitude.4': '•••• Fortitude da Carne: Resista até mesmo a dano agravado.',
+    'dot.fortitude.5': '••••• Fortitude do Coração: Suporte ataques mentais, sociais e psíquicos com a mesma facilidade que os físicos.',
+
+    // Ofuscação
+    'dot.obfuscate.1': '• Manto de Sombras: Desapareça nas sombras ao permanecer imóvel.',
+    'dot.obfuscate.2': '•• Presença Invisível: Mova-se sem ser notado, mesmo à vista de todos.',
+    'dot.obfuscate.3': '••• Máscara de Mil Faces: Altere sua aparência à vontade.',
+    'dot.obfuscate.4': '•••• Desaparecer da Mente: Torne-se verdadeiramente invisível aos observadores.',
+    'dot.obfuscate.5': '••••• Escurecer o Grupo: Estenda sua invisibilidade a outros próximos.',
+
+    // Potência
+    'dot.potence.1': '• Proeza: Levante e golpeie com força sobrenatural.',
+    'dot.potence.2': '•• Vigor Bruto: Execute feitos de força impossíveis para mortais.',
+    'dot.potence.3': '••• Megaprova: Aplique golpes esmagadores e quebre objetos com facilidade.',
+    'dot.potence.4': '•••• Força Sobre-Humana: Dominante facilmente quase qualquer coisa.',
+    'dot.potence.5': '••••• Punho de Caim: Seus golpes podem estilhaçar pedra e armaduras.',
+
+    // Presença
+    'dot.presence.1': '• Admiração: Cative instantaneamente uma multidão com seu magnetismo.',
+    'dot.presence.2': '•• Olhar Aterrorizante: Paralise um único alvo com terror sobrenatural.',
+    'dot.presence.3': '••• Fascinação: Enfeitiça uma vítima com adoração avassaladora.',
+    'dot.presence.4': '•••• Convocação: Force um alvo a vir até sua presença.',
+    'dot.presence.5': '••••• Majestade: Todos que o veem ficam em reverência e relutantes a agir contra você.',
+
+    // Proteano
+    'dot.protean.1': '• Olhos da Besta: Enxergue perfeitamente na escuridão total.',
+    'dot.protean.2': '•• Garras Ferais: Desenvolva garras capazes de rasgar carne e pedra.',
+    'dot.protean.3': '••• Fundir-se à Terra: Funda seu corpo com o solo para se esconder ou viajar.',
+    'dot.protean.4': '•••• Forma da Besta: Transforme-se em um lobo ou morcego.',
+    'dot.protean.5': '••••• Forma de Névoa: Dissolva seu corpo em névoa viva.',
+
+    // Taumaturgia
+    'dot.thaumaturgy.1': '• Iniciação em Trilha: Aprenda os primeiros segredos de uma trilha taumatúrgica.',
+    'dot.thaumaturgy.2': '•• Aprendiz: Use os poderes menores da trilha escolhida.',
+    'dot.thaumaturgy.3': '••• Discípulo: Comande poderes intermediários e rituais.',
+    'dot.thaumaturgy.4': '•••• Adepto: Domine os poderes avançados da trilha.',
+    'dot.thaumaturgy.5': '••••• Mestre: Desbloqueie os segredos supremos da trilha.',
 
     // VIRTUDES (1-5)
     'dot.conscience.1': '• Você tem poucos escrúpulos sobre suas ações.',

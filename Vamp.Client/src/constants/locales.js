@@ -204,6 +204,19 @@ export const LOCALES = {
         'desc.protean': 'Shape-shifting abilities.',
         'desc.thaumaturgy': 'Blood magic.',
 
+        // Discipline Names
+        'discipline.animalism': 'Animalism',
+        'discipline.auspex': 'Auspex',
+        'discipline.celerity': 'Celerity',
+        'discipline.dementation': 'Dementation',
+        'discipline.dominate': 'Dominate',
+        'discipline.fortitude': 'Fortitude',
+        'discipline.obfuscate': 'Obfuscate',
+        'discipline.potence': 'Potence',
+        'discipline.presence': 'Presence',
+        'discipline.protean': 'Protean',
+        'discipline.thaumaturgy': 'Thaumaturgy',
+
         // Clan Descriptions (Tooltips for Dropdown)
         'tooltip.clan_ventrue': 'Ventrue: Aristocrats and leaders who value power and lineage.',
         'tooltip.clan_brujah': 'Brujah: Rebels and warrior-philosophers who fight against tyranny.',
@@ -482,6 +495,19 @@ export const LOCALES = {
         'desc.presence': 'Carisma e medo sobrenaturais.',
         'desc.protean': 'Habilidades de mudança de forma.',
         'desc.thaumaturgy': 'Magia de sangue.',
+
+        // Nomes de Disciplinas
+        'discipline.animalism': 'Animalismo',
+        'discipline.auspex': 'Auspícios',
+        'discipline.celerity': 'Celeridade',
+        'discipline.dementation': 'Demência',
+        'discipline.dominate': 'Dominação',
+        'discipline.fortitude': 'Fortitude',
+        'discipline.obfuscate': 'Ofuscação',
+        'discipline.potence': 'Potência',
+        'discipline.presence': 'Presença',
+        'discipline.protean': 'Proteano',
+        'discipline.thaumaturgy': 'Taumaturgia',
 
         // Clan Descriptions
         'tooltip.clan_ventrue': 'Ventrue: Aristocratas e líderes que valorizam poder e linhagem.',
