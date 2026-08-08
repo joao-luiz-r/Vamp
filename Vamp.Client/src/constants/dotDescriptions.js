@@ -78,11 +78,11 @@ export const DOT_DESCRIPTIONS_EN = {
     'dot.brawl.4': '•••• Expert: You are a skilled martial artist.',
     'dot.brawl.5': '••••• Master: Legendary fighter.',
 
-    'dot.dodge.1': '• Novice: You can duck.',
-    'dot.dodge.2': '•• Practiced: You can avoid most attacks.',
-    'dot.dodge.3': '••• Competent: You are hard to hit.',
-    'dot.dodge.4': '•••• Expert: You move like water.',
-    'dot.dodge.5': '••••• Master: Nearly impossible to strike.',
+    'dot.awareness.1': '• Novice: You sometimes feel something is wrong.',
+    'dot.awareness.2': '•• Practiced: You feel the supernatural around you.',
+    'dot.awareness.3': '••• Competent: You can pinpoint sources of the occult.',
+    'dot.awareness.4': '•••• Expert: You sense the power that hums around you.',
+    'dot.awareness.5': '••••• Master: The supernatural and real worlds are one to you.',
 
     'dot.empathy.1': '• Novice: You can tell when someone is upset.',
     'dot.empathy.2': '•• Practiced: You can read basic emotions.',
@@ -163,11 +163,11 @@ export const DOT_DESCRIPTIONS_EN = {
     'dot.performance.4': '•••• Expert: You are famous in your field.',
     'dot.performance.5': '••••• Master: Legendary artist.',
 
-    'dot.security.1': '• Novice: You can pick a simple lock.',
-    'dot.security.2': '•• Practiced: You can bypass basic security.',
-    'dot.security.3': '••• Competent: You can crack most systems.',
-    'dot.security.4': '•••• Expert: Few systems can stop you.',
-    'dot.security.5': '••••• Master: No lock can hold you.',
+    'dot.larceny.1': '• Novice: You can pick a simple lock.',
+    'dot.larceny.2': '•• Practiced: You are a skilled pickpocket.',
+    'dot.larceny.3': '••• Competent: You can crack safes and forge documents.',
+    'dot.larceny.4': '•••• Expert: You can bypass most security systems.',
+    'dot.larceny.5': '••••• Master: No lock, vault, or hand can resist you.',
 
     'dot.stealth.1': '• Novice: You can hide in shadows.',
     'dot.stealth.2': '•• Practiced: You can move quietly.',
@@ -212,11 +212,11 @@ export const DOT_DESCRIPTIONS_EN = {
     'dot.law.4': '•••• Expert: You are a legal expert.',
     'dot.law.5': '••••• Master: You shape the law itself.',
 
-    'dot.linguistics.1': '• Novice: You speak one additional language.',
-    'dot.linguistics.2': '•• Practiced: You speak two additional languages.',
-    'dot.linguistics.3': '••• Competent: You speak four additional languages.',
-    'dot.linguistics.4': '•••• Expert: You speak eight additional languages.',
-    'dot.linguistics.5': '••••• Master: You can learn any language quickly.',
+    'dot.technology.1': '• Novice: You can perform simple repairs.',
+    'dot.technology.2': '•• Practiced: You can maintain and modify electronics.',
+    'dot.technology.3': '••• Competent: You can design and build new devices.',
+    'dot.technology.4': '•••• Expert: You can subvert almost any modern system.',
+    'dot.technology.5': '••••• Master: You shape how technology works.',
 
     'dot.medicine.1': '• Novice: You know first aid.',
     'dot.medicine.2': '•• Practiced: You could be a nurse.',
@@ -284,6 +284,86 @@ export const DOT_DESCRIPTIONS_EN = {
     'dot.discipline.3': '••• Level 3 Mastery',
     'dot.discipline.4': '•••• Level 4 Mastery',
     'dot.discipline.5': '••••• Level 5 Mastery',
+
+    // VIRTUES (1-5)
+    'dot.conscience.1': '• You have few qualms about your actions.',
+    'dot.conscience.2': '•• You feel some remorse for your worst deeds.',
+    'dot.conscience.3': '••• You have a functioning moral compass.',
+    'dot.conscience.4': '•••• Guilt gnaws at you for every wrong deed.',
+    'dot.conscience.5': '••••• Your morality is your most defining trait.',
+
+    'dot.selfControl.1': '• Your impulses frequently get the better of you.',
+    'dot.selfControl.2': '•• You struggle against your darker urges.',
+    'dot.selfControl.3': '••• You keep your emotions in check.',
+    'dot.selfControl.4': '•••• You are the master of your passions.',
+    'dot.selfControl.5': '••••• You are utterly unshakeable under pressure.',
+
+    'dot.courage.1': '• You flee from fear and danger.',
+    'dot.courage.2': '•• You can stand your ground when pushed.',
+    'dot.courage.3': '••• You face most horrors without flinching.',
+    'dot.courage.4': '•••• You are fearless in the face of the Beast.',
+    'dot.courage.5': '••••• You are a paragon of bravery.',
+
+    // BACKGROUNDS (1-5)
+    'dot.allies.1': '• One reliable mortal.',
+    'dot.allies.2': '•• Two or three trusted mortals.',
+    'dot.allies.3': '••• A small network of reliable helpers.',
+    'dot.allies.4': '•••• A substantial force of devoted followers.',
+    'dot.allies.5': '••••• An army of loyal mortals at your call.',
+
+    'dot.contacts.1': '• One useful contact.',
+    'dot.contacts.2': '•• A few informants in different fields.',
+    'dot.contacts.3': '••• A broad web of useful acquaintances.',
+    'dot.contacts.4': '•••• Contacts in every major field.',
+    'dot.contacts.5': '••••• You know someone everywhere who owes you.',
+
+    'dot.fame.1': '• Known only in your neighborhood.',
+    'dot.fame.2': '•• Recognized in the local scene.',
+    'dot.fame.3': '••• A regional reputation.',
+    'dot.fame.4': '•••• Nationally known.',
+    'dot.fame.5': '••••• A worldwide celebrity.',
+
+    'dot.generation.1': '• 15th generation: a weak bloodline.',
+    'dot.generation.2': '•• 14th generation: distant from Caine.',
+    'dot.generation.3': '••• 13th generation: the common modern line.',
+    'dot.generation.4': '•••• 11th generation: an ancient and potent line.',
+    'dot.generation.5': '••••• 8th generation: rare and formidable power.',
+
+    'dot.herd.1': '• One dependable vessel.',
+    'dot.herd.2': '•• A handful of vessels.',
+    'dot.herd.3': '••• Several steady sources of blood.',
+    'dot.herd.4': '•••• A sizable mortal community to draw from.',
+    'dot.herd.5': '••••• An entire group dedicated to your needs.',
+
+    'dot.influence.1': '• One domain where you hold sway.',
+    'dot.influence.2': '•• Influence across several areas.',
+    'dot.influence.3': '••• Control over a significant mortal institution.',
+    'dot.influence.4': '•••• Powerful pull over government or business.',
+    'dot.influence.5': '••••• You can move entire nations.',
+
+    'dot.mentor.1': '• A young but willing tutor.',
+    'dot.mentor.2': '•• A respected elder willing to teach.',
+    'dot.mentor.3': '••• A powerful patron who takes an interest in you.',
+    'dot.mentor.4': '•••• A powerful elder who protects you openly.',
+    'dot.mentor.5': '••••• The sire of your sire owes you their attention.',
+
+    'dot.resources.1': '• You have a modest income.',
+    'dot.resources.2': '•• You are comfortably well off.',
+    'dot.resources.3': '••• You are wealthy.',
+    'dot.resources.4': '•••• You are very wealthy.',
+    'dot.resources.5': '••••• Your wealth rivals that of corporations.',
+
+    'dot.retainers.1': '• A single servant.',
+    'dot.retainers.2': '•• Two or three loyal servants.',
+    'dot.retainers.3': '••• A small household of retainers.',
+    'dot.retainers.4': '•••• A trained staff of skilled followers.',
+    'dot.retainers.5': '••••• An entire entourage devoted to your service.',
+
+    'dot.status.1': '• A recognized member of Kindred society.',
+    'dot.status.2': '•• You have earned some respect.',
+    'dot.status.3': '••• You are a well-regarded figure.',
+    'dot.status.4': '•••• Your word carries real weight.',
+    'dot.status.5': '••••• You are one of the princes of the night.',
 };
 
 export const DOT_DESCRIPTIONS_PT = {
@@ -363,11 +443,11 @@ export const DOT_DESCRIPTIONS_PT = {
     'dot.brawl.4': '•••• Especialista: Você é um artista marcial habilidoso.',
     'dot.brawl.5': '••••• Mestre: Lutador lendário.',
 
-    'dot.dodge.1': '• Novato: Você pode se abaixar.',
-    'dot.dodge.2': '•• Praticante: Você pode evitar a maioria dos ataques.',
-    'dot.dodge.3': '••• Competente: Você é difícil de acertar.',
-    'dot.dodge.4': '•••• Especialista: Você se move como água.',
-    'dot.dodge.5': '••••• Mestre: Quase impossível de atingir.',
+    'dot.awareness.1': '• Novato: Você às vezes sente que algo está errado.',
+    'dot.awareness.2': '•• Praticante: Você sente o sobrenatural ao seu redor.',
+    'dot.awareness.3': '••• Competente: Você pode localizar fontes do oculto.',
+    'dot.awareness.4': '•••• Especialista: Você sente o poder que vibra ao seu redor.',
+    'dot.awareness.5': '••••• Mestre: O sobrenatural e o mundo real são um só para você.',
 
     'dot.empathy.1': '• Novato: Você pode dizer quando alguém está chateado.',
     'dot.empathy.2': '•• Praticante: Você pode ler emoções básicas.',
@@ -448,11 +528,11 @@ export const DOT_DESCRIPTIONS_PT = {
     'dot.performance.4': '•••• Especialista: Você é famoso em sua área.',
     'dot.performance.5': '••••• Mestre: Artista lendário.',
 
-    'dot.security.1': '• Novato: Você pode abrir uma fechadura simples.',
-    'dot.security.2': '•• Praticante: Você pode contornar segurança básica.',
-    'dot.security.3': '••• Competente: Você pode quebrar a maioria dos sistemas.',
-    'dot.security.4': '•••• Especialista: Poucos sistemas podem te parar.',
-    'dot.security.5': '••••• Mestre: Nenhuma fechadura pode te prender.',
+    'dot.larceny.1': '• Novato: Você pode abrir uma fechadura simples.',
+    'dot.larceny.2': '•• Praticante: Você é um batedor de carteiras habilidoso.',
+    'dot.larceny.3': '••• Competente: Você abre cofres e falsifica documentos.',
+    'dot.larceny.4': '•••• Especialista: Você contorna quase qualquer sistema de segurança.',
+    'dot.larceny.5': '••••• Mestre: Nenhuma fechadura, cofre ou mão resiste a você.',
 
     'dot.stealth.1': '• Novato: Você pode se esconder nas sombras.',
     'dot.stealth.2': '•• Praticante: Você pode se mover silenciosamente.',
@@ -497,11 +577,11 @@ export const DOT_DESCRIPTIONS_PT = {
     'dot.law.4': '•••• Especialista: Você é um especialista jurídico.',
     'dot.law.5': '••••• Mestre: Você molda a lei em si.',
 
-    'dot.linguistics.1': '• Novato: Você fala um idioma adicional.',
-    'dot.linguistics.2': '•• Praticante: Você fala dois idiomas adicionais.',
-    'dot.linguistics.3': '••• Competente: Você fala quatro idiomas adicionais.',
-    'dot.linguistics.4': '•••• Especialista: Você fala oito idiomas adicionais.',
-    'dot.linguistics.5': '••••• Mestre: Você pode aprender qualquer idioma rapidamente.',
+    'dot.technology.1': '• Novato: Você pode fazer reparos simples.',
+    'dot.technology.2': '•• Praticante: Você mantém e modifica eletrônicos.',
+    'dot.technology.3': '••• Competente: Você pode projetar e construir novos dispositivos.',
+    'dot.technology.4': '•••• Especialista: Você subverte quase qualquer sistema moderno.',
+    'dot.technology.5': '••••• Mestre: Você molda como a tecnologia funciona.',
 
     'dot.medicine.1': '• Novato: Você sabe primeiros socorros.',
     'dot.medicine.2': '•• Praticante: Você poderia ser um enfermeiro.',
@@ -569,5 +649,85 @@ export const DOT_DESCRIPTIONS_PT = {
     'dot.discipline.3': '••• Nível 3 de Domínio',
     'dot.discipline.4': '•••• Nível 4 de Domínio',
     'dot.discipline.5': '••••• Nível 5 de Domínio',
+
+    // VIRTUDES (1-5)
+    'dot.conscience.1': '• Você tem poucos escrúpulos sobre suas ações.',
+    'dot.conscience.2': '•• Você sente algum remorso pelas piores ações.',
+    'dot.conscience.3': '••• Você tem uma bússola moral funcional.',
+    'dot.conscience.4': '•••• A culpa corrói você por cada erro.',
+    'dot.conscience.5': '••••• Sua moralidade é seu traço mais definidor.',
+
+    'dot.selfControl.1': '• Seus impulsos frequentemente vencem você.',
+    'dot.selfControl.2': '•• Você luta contra seus impulsos sombrios.',
+    'dot.selfControl.3': '••• Você mantém suas emoções sob controle.',
+    'dot.selfControl.4': '•••• Você é o mestre de suas paixões.',
+    'dot.selfControl.5': '••••• Você é totalmente inabalável sob pressão.',
+
+    'dot.courage.1': '• Você foge do medo e do perigo.',
+    'dot.courage.2': '•• Você consegue se manter firme quando pressionado.',
+    'dot.courage.3': '••• Você enfrenta a maioria dos horrores sem hesitar.',
+    'dot.courage.4': '•••• Você não tem medo diante da Besta.',
+    'dot.courage.5': '••••• Você é um exemplo de bravura.',
+
+    // ANTECEDENTES (1-5)
+    'dot.allies.1': '• Um mortal confiável.',
+    'dot.allies.2': '•• Dois ou três mortais de confiança.',
+    'dot.allies.3': '••• Uma pequena rede de ajudantes confiáveis.',
+    'dot.allies.4': '•••• Uma força substancial de seguidores devotados.',
+    'dot.allies.5': '••••• Um exército de mortais leais ao seu chamado.',
+
+    'dot.contacts.1': '• Um contato útil.',
+    'dot.contacts.2': '•• Alguns informantes em áreas diferentes.',
+    'dot.contacts.3': '••• Uma ampla rede de conhecidos úteis.',
+    'dot.contacts.4': '•••• Contatos em todas as áreas importantes.',
+    'dot.contacts.5': '••••• Você conhece alguém em qualquer lugar que lhe deve favores.',
+
+    'dot.fame.1': '• Conhecido apenas no seu bairro.',
+    'dot.fame.2': '•• Reconhecido na cena local.',
+    'dot.fame.3': '••• Reputação regional.',
+    'dot.fame.4': '•••• Conhecido nacionalmente.',
+    'dot.fame.5': '••••• Celebridade mundial.',
+
+    'dot.generation.1': '• 15ª geração: uma linhagem fraca.',
+    'dot.generation.2': '•• 14ª geração: distante de Caim.',
+    'dot.generation.3': '••• 13ª geração: a linhagem moderna comum.',
+    'dot.generation.4': '•••• 11ª geração: uma linhagem antiga e potente.',
+    'dot.generation.5': '••••• 8ª geração: um poder raro e formidável.',
+
+    'dot.herd.1': '• Um vaso confiável.',
+    'dot.herd.2': '•• Alguns vasos.',
+    'dot.herd.3': '••• Várias fontes estáveis de sangue.',
+    'dot.herd.4': '•••• Uma comunidade mortal considerável.',
+    'dot.herd.5': '••••• Um grupo inteiro dedicado às suas necessidades.',
+
+    'dot.influence.1': '• Uma área onde você tem influência.',
+    'dot.influence.2': '•• Influência em várias áreas.',
+    'dot.influence.3': '••• Controle sobre uma instituição mortal significativa.',
+    'dot.influence.4': '•••• Grande influência sobre governo ou negócios.',
+    'dot.influence.5': '••••• Você pode mover nações inteiras.',
+
+    'dot.mentor.1': '• Um tutor jovem mas disposto.',
+    'dot.mentor.2': '•• Um ancião respeitado disposto a ensinar.',
+    'dot.mentor.3': '••• Um patrono poderoso que se interessa por você.',
+    'dot.mentor.4': '•••• Um ancião poderoso que o protege abertamente.',
+    'dot.mentor.5': '••••• O senhor do seu senhor lhe deve atenção.',
+
+    'dot.resources.1': '• Você tem uma renda modesta.',
+    'dot.resources.2': '•• Você vive confortavelmente.',
+    'dot.resources.3': '••• Você é rico.',
+    'dot.resources.4': '•••• Você é muito rico.',
+    'dot.resources.5': '••••• Sua riqueza rivaliza com corporações.',
+
+    'dot.retainers.1': '• Um único servo.',
+    'dot.retainers.2': '•• Dois ou três servos leais.',
+    'dot.retainers.3': '••• Uma pequena casa de subordinados.',
+    'dot.retainers.4': '•••• Uma equipe treinada de seguidores habilidosos.',
+    'dot.retainers.5': '••••• Uma comitiva inteira dedicada ao seu serviço.',
+
+    'dot.status.1': '• Um membro reconhecido da sociedade dos Membros.',
+    'dot.status.2': '•• Você conquistou algum respeito.',
+    'dot.status.3': '••• Você é uma figura bem-vista.',
+    'dot.status.4': '•••• Sua palavra tem peso real.',
+    'dot.status.5': '••••• Você é um dos príncipes da noite.',
 };
 

@@ -101,9 +101,8 @@ function App() {
             WebkitTextFillColor: 'transparent',
             display: 'inline-block'
           }}>
-            Vampire Archives
-          </h1>
-        </div>
+            {t('header.app_title') || 'Vampire Archives'}
+          </h1>        </div>
 
         <div className="controls-container" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div className="selection-group" style={{
@@ -143,7 +142,7 @@ function App() {
               </option>
               {characters.map(char => (
                 <option key={char.id} value={char.id} style={{ background: '#1a1a1a' }}>
-                  {char.name || 'Unnamed'}
+                  {char.name || (t('label.unnamed') || 'Unnamed')}
                 </option>
               ))}
             </select>

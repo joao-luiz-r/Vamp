@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useState } from 'react';
+import { useLocalization } from './LocalizationContext';
 
 // Context definition
 const ConfirmContext = createContext();
 
 export const ConfirmProvider = ({ children }) => {
+    const { t } = useLocalization();
     const [confirmState, setConfirmState] = useState({
         open: false,
         message: '',
@@ -31,8 +33,8 @@ export const ConfirmProvider = ({ children }) => {
                     <div className="confirm-dialog" onClick={(e) => e.stopPropagation()}>
                         <p className="confirm-message">{confirmState.message}</p>
                         <div className="confirm-actions">
-                            <button className="btn-confirm" onClick={() => handleClose(true)}>{'Yes'}</button>
-                            <button className="btn-cancel" onClick={() => handleClose(false)}>{'No'}</button>
+                            <button className="btn-confirm" onClick={() => handleClose(true)}>{t('action.yes') || 'Yes'}</button>
+                            <button className="btn-cancel" onClick={() => handleClose(false)}>{t('action.no') || 'No'}</button>
                         </div>
                     </div>
                 </div>

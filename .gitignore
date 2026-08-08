@@ -14,6 +14,10 @@ Vamp.Api/obj/
 Vamp.Api/CharacterData/
 Vamp.Api/Characters.json
 
+# Runtime Logs
+*.log
+*.err.log
+
 # IDE
 *.suo
 *.user
